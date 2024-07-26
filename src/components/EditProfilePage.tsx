@@ -198,57 +198,476 @@ const EditProfilePage: React.FC = () => {
         </select>
       </div>
 
-      
+
 
       <div className="form-container">
-        {profile && profileFields.map(key => (
-          <div className="form-group" key={key}>
-            <label htmlFor={key}>{key}</label>
+        <div className="form-container">
+          <div className="form-group" key="ProfileId">
+            <label htmlFor="ProfileId">ProfileId</label>
             <input
-              id={key}
-              name={key}
+              id="ProfileId"
+              name="ProfileId"
               type="text"
-              value={profile[key] || ''}
+              value={profile.ProfileId || ''}
               onChange={handleProfileChange}
             />
           </div>
-        ))}
-        {familyDetails && familyFields.map(key => (
-          <div className="form-group" key={key}>
-            <label htmlFor={key}>{key}</label>
+          <div className="form-group" key="Gender">
+            <label htmlFor="Gender">Gender</label>
             <input
-              id={key}
-              name={key}
+              id="Gender"
+              name="Gender"
               type="text"
-              value={familyDetails[key] || ''}
+              value={profile.Gender || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Mobile_no">
+            <label htmlFor="Mobile_no">Mobile_no</label>
+            <input
+              id="Mobile_no"
+              name="Mobile_no"
+              type="text"
+              value={profile.Mobile_no || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="EmailId">
+            <label htmlFor="EmailId">EmailId</label>
+            <input
+              id="EmailId"
+              name="EmailId"
+              type="text"
+              value={profile.EmailId || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_marital_status">
+            <label htmlFor="Profile_marital_status">Profile_marital_status</label>
+            <input
+              id="Profile_marital_status"
+              name="Profile_marital_status"
+              type="text"
+              value={profile.Profile_marital_status || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_dob">
+            <label htmlFor="Profile_dob">Profile_dob</label>
+            <input
+              id="Profile_dob"
+              name="Profile_dob"
+              type="text"
+              value={profile.Profile_dob || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_complexion">
+            <label htmlFor="Profile_complexion">Profile_complexion</label>
+            <input
+              id="Profile_complexion"
+              name="Profile_complexion"
+              type="text"
+              value={profile.Profile_complexion || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_address">
+            <label htmlFor="Profile_address">Profile_address</label>
+            <input
+              id="Profile_address"
+              name="Profile_address"
+              type="text"
+              value={profile.Profile_address || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_country">
+            <label htmlFor="Profile_country">Profile_country</label>
+            <input
+              id="Profile_country"
+              name="Profile_country"
+              type="text"
+              value={profile.Profile_country || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_state">
+            <label htmlFor="Profile_state">Profile_state</label>
+            <input
+              id="Profile_state"
+              name="Profile_state"
+              type="text"
+              value={profile.Profile_state || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_city">
+            <label htmlFor="Profile_city">Profile_city</label>
+            <input
+              id="Profile_city"
+              name="Profile_city"
+              type="text"
+              value={profile.Profile_city || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+          <div className="form-group" key="Profile_pincode">
+            <label htmlFor="Profile_pincode">Profile_pincode</label>
+            <input
+              id="Profile_pincode"
+              name="Profile_pincode"
+              type="text"
+              value={profile.Profile_pincode || ''}
+              onChange={handleProfileChange}
+            />
+          </div>
+        </div>
+
+
+
+
+
+
+        <div className="form-container">
+          <div className="form-group" key="father_name">
+            <label htmlFor="father_name">Father's Name</label>
+            <input
+              id="father_name"
+              name="father_name"
+              type="text"
+              value={familyDetails.father_name || ''}
               onChange={handleFamilyChange}
             />
           </div>
-        ))}
-        {educationDetails && educationFields.map(key => (
-          <div className="form-group" key={key}>
-            <label htmlFor={key}>{key}</label>
+          <div className="form-group" key="father_occupation">
+            <label htmlFor="father_occupation">Father's Occupation</label>
             <input
-              id={key}
-              name={key}
+              id="father_occupation"
+              name="father_occupation"
               type="text"
-              value={educationDetails[key] || ''}
+              value={familyDetails.father_occupation || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="mother_name">
+            <label htmlFor="mother_name">Mother's Name</label>
+            <input
+              id="mother_name"
+              name="mother_name"
+              type="text"
+              value={familyDetails.mother_name || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="mother_occupation">
+            <label htmlFor="mother_occupation">Mother's Occupation</label>
+            <input
+              id="mother_occupation"
+              name="mother_occupation"
+              type="text"
+              value={familyDetails.mother_occupation || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="family_name">
+            <label htmlFor="family_name">Family Name</label>
+            <input
+              id="family_name"
+              name="family_name"
+              type="text"
+              value={familyDetails.family_name || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="about_self">
+            <label htmlFor="about_self">About Self</label>
+            <input
+              id="about_self"
+              name="about_self"
+              type="text"
+              value={familyDetails.about_self || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="hobbies">
+            <label htmlFor="hobbies">Hobbies</label>
+            <input
+              id="hobbies"
+              name="hobbies"
+              type="text"
+              value={familyDetails.hobbies || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="blood_group">
+            <label htmlFor="blood_group">Blood Group</label>
+            <input
+              id="blood_group"
+              name="blood_group"
+              type="text"
+              value={familyDetails.blood_group || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="Pysically_changed">
+            <label htmlFor="Pysically_changed">Physically Changed</label>
+            <input
+              id="Pysically_changed"
+              name="Pysically_changed"
+              type="text"
+              value={familyDetails.Pysically_changed || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="property_details">
+            <label htmlFor="property_details">Property Details</label>
+            <input
+              id="property_details"
+              name="property_details"
+              type="text"
+              value={familyDetails.property_details || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="property_worth">
+            <label htmlFor="property_worth">Property Worth</label>
+            <input
+              id="property_worth"
+              name="property_worth"
+              type="text"
+              value={familyDetails.property_worth || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="suya_gothram">
+            <label htmlFor="suya_gothram">Suya Gothram</label>
+            <input
+              id="suya_gothram"
+              name="suya_gothram"
+              type="text"
+              value={familyDetails.suya_gothram || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="uncle_gothram">
+            <label htmlFor="uncle_gothram">Uncle Gothram</label>
+            <input
+              id="uncle_gothram"
+              name="uncle_gothram"
+              type="text"
+              value={familyDetails.uncle_gothram || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="ancestor_origin">
+            <label htmlFor="ancestor_origin">Ancestor Origin</label>
+            <input
+              id="ancestor_origin"
+              name="ancestor_origin"
+              type="text"
+              value={familyDetails.ancestor_origin || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+          <div className="form-group" key="about_family">
+            <label htmlFor="about_family">About Family</label>
+            <input
+              id="about_family"
+              name="about_family"
+              type="text"
+              value={familyDetails.about_family || ''}
+              onChange={handleFamilyChange}
+            />
+          </div>
+        </div>
+
+
+
+        <div className="form-container">
+          <div className="form-group" key="highest_education">
+            <label htmlFor="highest_education">Highest Education</label>
+            <input
+              id="highest_education"
+              name="highest_education"
+              type="text"
+              value={educationDetails.highest_education || ''}
               onChange={handleEducationChange}
             />
           </div>
-        ))}
-        {partnerPreferences && partnerPrefFields.map(key => (
-          <div className="form-group" key={key}>
-            <label htmlFor={key}>{key}</label>
+          <div className="form-group" key="ug_degree">
+            <label htmlFor="ug_degree">UG Degree</label>
             <input
-              id={key}
-              name={key}
+              id="ug_degree"
+              name="ug_degree"
               type="text"
-              value={partnerPreferences[key] || ''}
+              value={educationDetails.ug_degree || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="about_edu">
+            <label htmlFor="about_edu">About Education</label>
+            <input
+              id="about_edu"
+              name="about_edu"
+              type="text"
+              value={educationDetails.about_edu || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="annual_income">
+            <label htmlFor="annual_income">Annual Income</label>
+            <input
+              id="annual_income"
+              name="annual_income"
+              type="text"
+              value={educationDetails.annual_income || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="actual_income">
+            <label htmlFor="actual_income">Actual Income</label>
+            <input
+              id="actual_income"
+              name="actual_income"
+              type="text"
+              value={educationDetails.actual_income || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="work_country">
+            <label htmlFor="work_country">Work Country</label>
+            <input
+              id="work_country"
+              name="work_country"
+              type="text"
+              value={educationDetails.work_country || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="work_state">
+            <label htmlFor="work_state">Work State</label>
+            <input
+              id="work_state"
+              name="work_state"
+              type="text"
+              value={educationDetails.work_state || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="work_pincode">
+            <label htmlFor="work_pincode">Work Pincode</label>
+            <input
+              id="work_pincode"
+              name="work_pincode"
+              type="text"
+              value={educationDetails.work_pincode || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+          <div className="form-group" key="career_plans">
+            <label htmlFor="career_plans">Career Plans</label>
+            <input
+              id="career_plans"
+              name="career_plans"
+              type="text"
+              value={educationDetails.career_plans || ''}
+              onChange={handleEducationChange}
+            />
+          </div>
+        </div>
+        <div className="form-container">
+          <div className="form-group" key="highest_education">
+            <label htmlFor="highest_education">Highest Education</label>
+            <input
+              id="highest_education"
+              name="highest_education"
+              type="text"
+              value={partnerPreferences.highest_education || ''}
               onChange={handlePartnerPrefChange}
             />
           </div>
-        ))}
+          <div className="form-group" key="ug_degree">
+            <label htmlFor="ug_degree">UG Degree</label>
+            <input
+              id="ug_degree"
+              name="ug_degree"
+              type="text"
+              value={partnerPreferences.ug_degree || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="about_edu">
+            <label htmlFor="about_edu">About Education</label>
+            <input
+              id="about_edu"
+              name="about_edu"
+              type="text"
+              value={partnerPreferences.about_edu || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="annual_income">
+            <label htmlFor="annual_income">Annual Income</label>
+            <input
+              id="annual_income"
+              name="annual_income"
+              type="text"
+              value={partnerPreferences.annual_income || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="actual_income">
+            <label htmlFor="actual_income">Actual Income</label>
+            <input
+              id="actual_income"
+              name="actual_income"
+              type="text"
+              value={partnerPreferences.actual_income || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="work_country">
+            <label htmlFor="work_country">Work Country</label>
+            <input
+              id="work_country"
+              name="work_country"
+              type="text"
+              value={partnerPreferences.work_country || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="work_state">
+            <label htmlFor="work_state">Work State</label>
+            <input
+              id="work_state"
+              name="work_state"
+              type="text"
+              value={partnerPreferences.work_state || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="work_pincode">
+            <label htmlFor="work_pincode">Work Pincode</label>
+            <input
+              id="work_pincode"
+              name="work_pincode"
+              type="text"
+              value={partnerPreferences.work_pincode || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+          <div className="form-group" key="career_plans">
+            <label htmlFor="career_plans">Career Plans</label>
+            <input
+              id="career_plans"
+              name="career_plans"
+              type="text"
+              value={partnerPreferences.career_plans || ''}
+              onChange={handlePartnerPrefChange}
+            />
+          </div>
+        </div>
       </div>
       <div className="button">
         <button onClick={handleChange} className="btn btn-primary">Save</button>
