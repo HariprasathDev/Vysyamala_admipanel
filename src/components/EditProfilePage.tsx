@@ -264,13 +264,20 @@ const EditProfilePage: React.FC = () => {
           </div>
           <div className="form-group" key="Profile_complexion">
             <label htmlFor="Profile_complexion">Profile_complexion</label>
-            <input
+            <select
               id="Profile_complexion"
               name="Profile_complexion"
-              type="text"
+              className="form-control"
               value={profile.Profile_complexion || ''}
               onChange={handleProfileChange}
-            />
+            >
+              <option value="">Select Complexion</option>
+              <option value="fair">Fair</option>
+              <option value="medium">Medium</option>
+              <option value="olive">Olive</option>
+              <option value="brown">Brown</option>
+              <option value="dark">Dark</option>
+            </select>
           </div>
           <div className="form-group" key="Profile_address">
             <label htmlFor="Profile_address">Profile_address</label>
@@ -575,7 +582,7 @@ const EditProfilePage: React.FC = () => {
               onChange={handleEducationChange}
             />
           </div>
-        </div>
+        </div>z
         <div className="form-container">
           <div className="form-group" key="highest_education">
             <label htmlFor="highest_education">Highest Education</label>

@@ -1,4 +1,4 @@
-/* src/pages/EditProfilePage.css */
+src/pages/EditProfilePage.css
 .edit-profile-page {
     max-width: 800px;
     margin: 0 auto;
@@ -62,4 +62,14 @@
     border: 0px solid #ffe7e7;
     border-radius: 1;
     background-color: #ffffff;
+}
+
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
