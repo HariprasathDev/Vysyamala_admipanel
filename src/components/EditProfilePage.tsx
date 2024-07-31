@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../css/EditProfilePage.css';
+import RasiGrid from './HoroDetails/RasiGrid';
+import AmsamGrid from './HoroDetails/AmsamGrid';
 
 const EditProfilePage: React.FC = () => {
   const { ContentId } = useParams<{ ContentId: string }>();
@@ -14,6 +16,17 @@ const EditProfilePage: React.FC = () => {
   const [partnerPreferences, setPartnerPreferences] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const onRasiContentsChange = (newContent: React.SetStateAction<never[]>) => {
+    setRasiContent(newContent);
+  };
+
+  const onAmsamContentsChange = (newContent: React.SetStateAction<never[]>) => {
+    setAmsamContent(newContent);
+  };
+
+  const [rasiContent, setRasiContent] = useState([]);
+  const [amsamContent, setAmsamContent] = useState([])
 
   const profileFields = [
     'ProfileId',
@@ -181,13 +194,13 @@ const EditProfilePage: React.FC = () => {
   }
 
   return (
-    <div className="edit-profile-page">
+    <div className="edit-profile-page ">
       <h2>Edit Profile</h2>
       <div className="w-full">
-        <label className="block text-black font-medium mb-1">Status</label>
+        <label className="block text-black font-medium mb-1 	">Status</label>
         <select
           name="Profile_country"
-          className="outline-none w-full px-4 py-2 border border-black rounded"
+          className="outline-none w-full px-4 py-2 border border-black rounded w-48"
           onChange={(e) => handleInputChange(e, 'basicDetails')}
         >
           <option value="">New</option>
@@ -197,6 +210,8 @@ const EditProfilePage: React.FC = () => {
           <option value="">Delete</option>
         </select>
       </div>
+
+
 
 
 
@@ -242,7 +257,7 @@ const EditProfilePage: React.FC = () => {
               onChange={handleProfileChange}
             />
           </div>
-          <div className="form-group" key="Profile_marital_status">
+          {/* <div className="form-group" key="Profile_marital_status">
             <label htmlFor="Profile_marital_status">Profile_marital_status</label>
             <input
               id="Profile_marital_status"
@@ -251,7 +266,28 @@ const EditProfilePage: React.FC = () => {
               value={profile.Profile_marital_status || ''}
               onChange={handleProfileChange}
             />
+          </div> */}
+
+
+          <div className="form-group" key="Profile_complexion">
+            <label htmlFor="Profile_complexion">Profile marital status</label>
+            <select
+              id="Profile_marital_status"
+              name="Profile_marital_status"
+              type="text"
+              value={profile.Profile_marital_status || ''}
+              onChange={handleProfileChange}
+              className="form-control"
+            >
+              <option value="">Select Complexion</option>
+              <option value="Widowed">Widowed</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Separated">Separated</option>
+              <option value="Marriage">Marriage</option>
+              <option value="Single">Single</option>
+            </select>
           </div>
+
           <div className="form-group" key="Profile_dob">
             <label htmlFor="Profile_dob">Profile_dob</label>
             <input
@@ -263,7 +299,7 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
           <div className="form-group" key="Profile_complexion">
-            <label htmlFor="Profile_complexion">Profile_complexion</label>
+            <label htmlFor="Profile_complexion">Profile Complexion</label>
             <select
               id="Profile_complexion"
               name="Profile_complexion"
@@ -299,6 +335,24 @@ const EditProfilePage: React.FC = () => {
               onChange={handleProfileChange}
             />
           </div>
+
+          {/* <div className="form-group" key="Profile_complexion">
+            <label htmlFor="Profile_complexion">Profile country</label>
+            <select
+              id="Profile_country"
+              name="Profile_country"
+              type="text"
+              value={profile.Profile_country || ''}
+              onChange={handleProfileChange}
+              className="form-control"
+            >
+              <option value="">Select Complexion</option>
+              <option value="doctor">doctor</option>
+              <option value="teacher">teacher</option>
+              <option value="Cook">Cook</option>
+              <option value="Painter">Painter</option>
+            </select>
+          </div> */}
           <div className="form-group" key="Profile_state">
             <label htmlFor="Profile_state">Profile_state</label>
             <input
@@ -347,16 +401,34 @@ const EditProfilePage: React.FC = () => {
               onChange={handleFamilyChange}
             />
           </div>
-          <div className="form-group" key="father_occupation">
-            <label htmlFor="father_occupation">Father's Occupation</label>
-            <input
+
+          <div className="form-group" key="Profile_complexion">
+            <label htmlFor="Profile_complexion">Father's Occupation</label>
+            <select
               id="father_occupation"
               name="father_occupation"
               type="text"
+              className="form-control"
               value={familyDetails.father_occupation || ''}
               onChange={handleFamilyChange}
-            />
+            >
+              <option value="">Select Complexion</option>
+              <option value="doctor">doctor</option>
+              <option value="teacher">teacher</option>
+              <option value="Cook">Cook</option>
+              <option value="Painter">Painter</option>
+            </select>
           </div>
+
+
+
+          {/* <div className="form-group" key="father_occupation">
+            <label htmlFor="father_occupation"></label>
+            <input
+
+
+            />
+          </div> */}
           <div className="form-group" key="mother_name">
             <label htmlFor="mother_name">Mother's Name</label>
             <input
@@ -367,7 +439,30 @@ const EditProfilePage: React.FC = () => {
               onChange={handleFamilyChange}
             />
           </div>
-          <div className="form-group" key="mother_occupation">
+
+
+
+
+          <div className="form-group" key="Profile_complexion">
+            <label htmlFor="Profile_complexion">Mother's Occupation</label>
+            <select
+              id="mother_occupation"
+              name="mother_occupation"
+              type="text"
+              value={familyDetails.mother_occupation || ''}
+              onChange={handleFamilyChange}
+              className="form-control"
+            >
+              <option value="">Select Complexion</option>
+              <option value="doctor">doctor</option>
+              <option value="teacher">teacher</option>
+              <option value="Cook">Cook</option>
+              <option value="Painter">Painter</option>
+            </select>
+          </div>
+
+
+          {/* <div className="form-group" key="mother_occupation">
             <label htmlFor="mother_occupation">Mother's Occupation</label>
             <input
               id="mother_occupation"
@@ -376,7 +471,7 @@ const EditProfilePage: React.FC = () => {
               value={familyDetails.mother_occupation || ''}
               onChange={handleFamilyChange}
             />
-          </div>
+          </div> */}
           <div className="form-group" key="family_name">
             <label htmlFor="family_name">Family Name</label>
             <input
@@ -582,98 +677,22 @@ const EditProfilePage: React.FC = () => {
               onChange={handleEducationChange}
             />
           </div>
-        </div>z
-        <div className="form-container">
-          <div className="form-group" key="highest_education">
-            <label htmlFor="highest_education">Highest Education</label>
-            <input
-              id="highest_education"
-              name="highest_education"
-              type="text"
-              value={partnerPreferences.highest_education || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="ug_degree">
-            <label htmlFor="ug_degree">UG Degree</label>
-            <input
-              id="ug_degree"
-              name="ug_degree"
-              type="text"
-              value={partnerPreferences.ug_degree || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="about_edu">
-            <label htmlFor="about_edu">About Education</label>
-            <input
-              id="about_edu"
-              name="about_edu"
-              type="text"
-              value={partnerPreferences.about_edu || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="annual_income">
-            <label htmlFor="annual_income">Annual Income</label>
-            <input
-              id="annual_income"
-              name="annual_income"
-              type="text"
-              value={partnerPreferences.annual_income || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="actual_income">
-            <label htmlFor="actual_income">Actual Income</label>
-            <input
-              id="actual_income"
-              name="actual_income"
-              type="text"
-              value={partnerPreferences.actual_income || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="work_country">
-            <label htmlFor="work_country">Work Country</label>
-            <input
-              id="work_country"
-              name="work_country"
-              type="text"
-              value={partnerPreferences.work_country || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="work_state">
-            <label htmlFor="work_state">Work State</label>
-            <input
-              id="work_state"
-              name="work_state"
-              type="text"
-              value={partnerPreferences.work_state || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="work_pincode">
-            <label htmlFor="work_pincode">Work Pincode</label>
-            <input
-              id="work_pincode"
-              name="work_pincode"
-              type="text"
-              value={partnerPreferences.work_pincode || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
-          <div className="form-group" key="career_plans">
-            <label htmlFor="career_plans">Career Plans</label>
-            <input
-              id="career_plans"
-              name="career_plans"
-              type="text"
-              value={partnerPreferences.career_plans || ''}
-              onChange={handlePartnerPrefChange}
-            />
-          </div>
+        </div>
+
+        <div>
+          <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
+            Rasi Grid
+          </h4>
+          <RasiGrid
+            centerLabel={'Rasi'}
+            onRasiContentsChange={onRasiContentsChange} />
+        </div><br /><div>
+          <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
+            Amsam Grid
+          </h4>
+          <AmsamGrid
+            centerLabel={'Amsam'}
+            onAmsamContentsChange={onAmsamContentsChange} />
         </div>
       </div>
       <div className="button">
