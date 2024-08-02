@@ -85,6 +85,12 @@ const EditProfilePage: React.FC = () => {
     'pref_foreign_intrest',
   ];
 
+
+
+  const [occupations, setOccupations] = useState<Occupation[]>([]);
+
+    const [complexionOptions, setComplexionOptions] = useState<ComplexionOption[]>([]);
+
   useEffect(() => {
     if (!ContentId) {
       console.error('ContentId is undefined');
@@ -142,6 +148,33 @@ const EditProfilePage: React.FC = () => {
     const { name, value } = e.target;
     setPartnerPreferences({ ...partnerPreferences, [name]: value });
   };
+
+
+  useEffect(() => {
+    const fetchOccupations = async () => {
+      try {
+        const response = await axios.post(`http://103.214.132.20:8000/auth/Get_Parent_Occupation/`);
+        const options = Object.values(response.data) as Occupation[];
+        setOccupations(options);
+      } catch (error) {
+        console.error("Error fetching marital status options:", error);
+      }
+    };
+    fetchOccupations();
+  }, []);
+
+  useEffect(() => {
+    const fetchComplexionStatus = async () => {
+      try {
+        const response = await axios.post("http://103.214.132.20:8000/auth/Get_Complexion/");
+        const options = Object.values(response.data) as ComplexionOption[];
+        setComplexionOptions(options);
+      } catch (error) {
+        console.error("Error fetching complexion options:", error);
+      }
+    };
+    fetchComplexionStatus();
+  }, []);
 
   const handleChange = async () => {
     try {
@@ -210,10 +243,6 @@ const EditProfilePage: React.FC = () => {
           <option value="">Delete</option>
         </select>
       </div>
-
-
-
-
 
       <div className="form-container">
         <div className="form-container">
@@ -306,13 +335,18 @@ const EditProfilePage: React.FC = () => {
               className="form-control"
               value={profile.Profile_complexion || ''}
               onChange={handleProfileChange}
-            >
-              <option value="">Select Complexion</option>
-              <option value="fair">Fair</option>
-              <option value="medium">Medium</option>
-              <option value="olive">Olive</option>
-              <option value="brown">Brown</option>
-              <option value="dark">Dark</option>
+              >
+              <option value="" selected disabled>
+                Select your complexion
+              </option>
+              {complexionOptions.map((option) => (
+                <option
+                  key={option.complexion_id}
+                  value={option.complexion_id}
+                >
+                  {option.complexion_description}
+                </option>
+              ))}
             </select>
           </div>
           <div className="form-group" key="Profile_address">
@@ -387,9 +421,6 @@ const EditProfilePage: React.FC = () => {
 
 
 
-
-
-
         <div className="form-container">
           <div className="form-group" key="father_name">
             <label htmlFor="father_name">Father's Name</label>
@@ -412,11 +443,14 @@ const EditProfilePage: React.FC = () => {
               value={familyDetails.father_occupation || ''}
               onChange={handleFamilyChange}
             >
-              <option value="">Select Complexion</option>
-              <option value="doctor">doctor</option>
-              <option value="teacher">teacher</option>
-              <option value="Cook">Cook</option>
-              <option value="Painter">Painter</option>
+              <option value="" disabled selected>
+                -- Select Occupation --
+              </option>
+              {occupations.map((occupation) => (
+                <option key={occupation.occupation_id} value={occupation.occupation_description}>
+                  {occupation.occupation_description}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -453,11 +487,14 @@ const EditProfilePage: React.FC = () => {
               onChange={handleFamilyChange}
               className="form-control"
             >
-              <option value="">Select Complexion</option>
-              <option value="doctor">doctor</option>
-              <option value="teacher">teacher</option>
-              <option value="Cook">Cook</option>
-              <option value="Painter">Painter</option>
+              <option value="" disabled selected>
+                -- Select Occupation --
+              </option>
+              {occupations.map((occupation) => (
+                <option key={occupation.occupation_id} value={occupation.occupation_description}>
+                  {occupation.occupation_description}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -584,8 +621,6 @@ const EditProfilePage: React.FC = () => {
           </div>
         </div>
 
-
-
         <div className="form-container">
           <div className="form-group" key="highest_education">
             <label htmlFor="highest_education">Highest Education</label>
@@ -679,20 +714,26 @@ const EditProfilePage: React.FC = () => {
           </div>
         </div>
 
+
+
+
+        {/* //rasigrid */}
         <div>
-          <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
-            Rasi Grid
-          </h4>
-          <RasiGrid
-            centerLabel={'Rasi'}
-            onRasiContentsChange={onRasiContentsChange} />
-        </div><br /><div>
-          <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
-            Amsam Grid
-          </h4>
-          <AmsamGrid
-            centerLabel={'Amsam'}
-            onAmsamContentsChange={onAmsamContentsChange} />
+          <div>
+            <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
+              Rasi Grid
+            </h4>
+            <RasiGrid
+              centerLabel={'Rasi'}
+              onRasiContentsChange={onRasiContentsChange} />
+          </div><br /><div>
+            <h4 className="text-xl font-semibold text-black dark:text-white mb-4">
+              Amsam Grid
+            </h4>
+            <AmsamGrid
+              centerLabel={'Amsam'}
+              onAmsamContentsChange={onAmsamContentsChange} />
+          </div>
         </div>
       </div>
       <div className="button">
