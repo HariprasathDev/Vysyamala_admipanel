@@ -286,17 +286,6 @@ const EditProfilePage: React.FC = () => {
               onChange={handleProfileChange}
             />
           </div>
-          {/* <div className="form-group" key="Profile_marital_status">
-            <label htmlFor="Profile_marital_status">Profile_marital_status</label>
-            <input
-              id="Profile_marital_status"
-              name="Profile_marital_status"
-              type="text"
-              value={profile.Profile_marital_status || ''}
-              onChange={handleProfileChange}
-            />
-          </div> */}
-
 
           <div className="form-group" key="Profile_complexion">
             <label htmlFor="Profile_complexion">Profile marital status</label>
@@ -370,23 +359,7 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
 
-          {/* <div className="form-group" key="Profile_complexion">
-            <label htmlFor="Profile_complexion">Profile country</label>
-            <select
-              id="Profile_country"
-              name="Profile_country"
-              type="text"
-              value={profile.Profile_country || ''}
-              onChange={handleProfileChange}
-              className="form-control"
-            >
-              <option value="">Select Complexion</option>
-              <option value="doctor">doctor</option>
-              <option value="teacher">teacher</option>
-              <option value="Cook">Cook</option>
-              <option value="Painter">Painter</option>
-            </select>
-          </div> */}
+
           <div className="form-group" key="Profile_state">
             <label htmlFor="Profile_state">Profile_state</label>
             <input
@@ -455,14 +428,6 @@ const EditProfilePage: React.FC = () => {
           </div>
 
 
-
-          {/* <div className="form-group" key="father_occupation">
-            <label htmlFor="father_occupation"></label>
-            <input
-
-
-            />
-          </div> */}
           <div className="form-group" key="mother_name">
             <label htmlFor="mother_name">Mother's Name</label>
             <input
@@ -498,17 +463,6 @@ const EditProfilePage: React.FC = () => {
             </select>
           </div>
 
-
-          {/* <div className="form-group" key="mother_occupation">
-            <label htmlFor="mother_occupation">Mother's Occupation</label>
-            <input
-              id="mother_occupation"
-              name="mother_occupation"
-              type="text"
-              value={familyDetails.mother_occupation || ''}
-              onChange={handleFamilyChange}
-            />
-          </div> */}
           <div className="form-group" key="family_name">
             <label htmlFor="family_name">Family Name</label>
             <input

@@ -979,6 +979,10 @@ const ProfileForm = () => {
     { label: 'ID Proof', sectionIndex: 2, isMultiple: false }
   ];
 
+  function handleAnnualIncomeChange(_arg0: string, _checked: boolean): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <div>
       <form className="" onSubmit={onSubmit} key={formKey}>
@@ -2759,63 +2763,7 @@ const ProfileForm = () => {
                 )}
               </div>
             </div>
-            {/* <div className="w-full">
-    <div className="w-full">
-      <div className="w-full">
-        <div>
-          <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
-          <div className="flex justify-between items-center">
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Bachelors,Engineering"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Bachelors,Engineering</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Bachelors,Arts/science/commerce/B phil"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Bachelors,Arts/science/commerce/B phil</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Legal-BL/ML/LLb/LLM Others"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Legal-BL/ML/LLb/LLM Others</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Management - BBA/MBA/Others"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Management - BBA/MBA/Others</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Doctorate"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Doctorate</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      {errors.feature_preference && <span className="text-red-500">Education Preference is required</span>}
-    </div>
-  </div> */}
+            
             <div className="w-full">
               <div>
                 <h5 className="text-[18px] text-black font-semibold mb-2">
