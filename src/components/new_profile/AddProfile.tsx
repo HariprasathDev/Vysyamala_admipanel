@@ -197,7 +197,7 @@ const ProfileForm = () => {
     setAmsamContent(newContent);
   };
 
-  const validateField = (name, value) => {
+  const validateField = (name: string, value: string) => {
     switch (name) {
       case 'Mobile_no':
         return value.length === 10 && /^[0-9]+$/.test(value)
@@ -978,10 +978,6 @@ const ProfileForm = () => {
     { label: 'Horoscope Image', sectionIndex: 1, isMultiple: false },
     { label: 'ID Proof', sectionIndex: 2, isMultiple: false }
   ];
-
-  function handleAnnualIncomeChange(_arg0: string, _checked: boolean): void {
-    throw new Error('Function not implemented.');
-  }
 
   return (
     <div>
@@ -2617,9 +2613,9 @@ const ProfileForm = () => {
 
 
           {isFeaturePreferenceOpen && (
-          <div className="flex flex-col gap-5 pt-2">
-            <div className="flex w-full flex-row gap-4">
-              {/* <div className="w-full">
+            <div className="flex flex-col gap-5 pt-2">
+              <div className="flex w-full flex-row gap-4">
+                {/* <div className="w-full">
       <div className="w-full">
         <label className="block text-black font-medium mb-1">
           Select your Marital Status
@@ -2648,192 +2644,248 @@ const ProfileForm = () => {
         )}
       </div>
     </div> */}
-              <div className="w-full">
-                <Input
-                  label={'Height from'}
-                  name="feature_preference"
-                  onChange={(e) => handleInputChange(e, 'partnerPreferences')}
-                />
-                {errors.age_pref && (
-                  <span className="text-red-500">From Month is required</span>
-                )}
-              </div>
-              <div className="w-full">
-                <Input
-                  label={'Height To'}
-                  name="feature_preference"
-                  onChange={(e) => handleInputChange(e, 'partnerPreferences')}
-                />
-                {errors.from_year && (
-                  <span className="text-red-500">From Year is required</span>
-                )}
-              </div>
-              <div className="w-full">
-                <Input
-                  label={'Age Preference'}
-                  name="feature_preference"
-                  onChange={(e) => handleInputChange(e, 'partnerPreferences')}
-                />
-                {errors.age_pref && (
-                  <span className="text-red-500">{errors.age_pref}</span>
-                )}
-              </div>
-            </div>
-            <div className="flex w-full flex-row gap-4">
-
-              <div className="w-full">
-                <Input
-                  label={'Height Preference'}
-                  name="feature_preference"
-                  onChange={(e) => handleInputChange(e, 'partnerPreferences')}
-                />
-                {errors.feature_preference && (
-                  <span className="text-red-500">
-                    Height Preference is required
-                  </span>
-                )}
-              </div>
-              <div className="w-full">
                 <div className="w-full">
-                  <label className="block text-black font-medium mb-1">
-                    Chevvai
-                  </label>
-                  <select
+                  <Input
+                    label={'Height from'}
                     name="feature_preference"
-                    className="outline-none w-full px-4 py-2 border border-black rounded"
-                    onChange={(e) => handleInputChange(e, 'basicDetails')}
-                  >
-                    <option value="">Chevvai</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                  {errors.feature_preference && (
-                    <span className="text-red-500">required</span>
+                    onChange={(e) => handleInputChange(e, 'partnerPreferences')}
+                  />
+                  {errors.age_pref && (
+                    <span className="text-red-500">From Month is required</span>
+                  )}
+                </div>
+                <div className="w-full">
+                  <Input
+                    label={'Height To'}
+                    name="feature_preference"
+                    onChange={(e) => handleInputChange(e, 'partnerPreferences')}
+                  />
+                  {errors.from_year && (
+                    <span className="text-red-500">From Year is required</span>
+                  )}
+                </div>
+                <div className="w-full">
+                  <Input
+                    label={'Age Preference'}
+                    name="feature_preference"
+                    onChange={(e) => handleInputChange(e, 'partnerPreferences')}
+                  />
+                  {errors.age_pref && (
+                    <span className="text-red-500">{errors.age_pref}</span>
                   )}
                 </div>
               </div>
-              <div className="w-full">
-                <div className="flex w-full flex-row gap-4">
+              <div className="flex w-full flex-row gap-4">
+
+                <div className="w-full">
+                  <Input
+                    label={'Height Preference'}
+                    name="feature_preference"
+                    onChange={(e) => handleInputChange(e, 'partnerPreferences')}
+                  />
+                  {errors.feature_preference && (
+                    <span className="text-red-500">
+                      Height Preference is required
+                    </span>
+                  )}
+                </div>
+                <div className="w-full">
                   <div className="w-full">
+                    <label className="block text-black font-medium mb-1">
+                      Chevvai
+                    </label>
+                    <select
+                      name="feature_preference"
+                      className="outline-none w-full px-4 py-2 border border-black rounded"
+                      onChange={(e) => handleInputChange(e, 'basicDetails')}
+                    >
+                      <option value="">Chevvai</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    {errors.feature_preference && (
+                      <span className="text-red-500">required</span>
+                    )}
+                  </div>
+                </div>
+                <div className="w-full">
+                  <div className="flex w-full flex-row gap-4">
                     <div className="w-full">
-                      <label className="block text-black font-medium mb-1">
-                        Rehu / Ketu
-                      </label>
-                      <select
-                        name="feature_preference"
-                        className="outline-none w-full px-4 py-2 border border-black rounded"
-                        onChange={(e) => handleInputChange(e, 'basicDetails')}
-                      >
-                        <option value="">Rehu / Ketu</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                      </select>
-                      {errors.feature_preference && (
-                        <span className="text-red-500">
-                          Rahu/Ketu Dhosham is required
-                        </span>
-                      )}
+                      <div className="w-full">
+                        <label className="block text-black font-medium mb-1">
+                          Rehu / Ketu
+                        </label>
+                        <select
+                          name="feature_preference"
+                          className="outline-none w-full px-4 py-2 border border-black rounded"
+                          onChange={(e) => handleInputChange(e, 'basicDetails')}
+                        >
+                          <option value="">Rehu / Ketu</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                        {errors.feature_preference && (
+                          <span className="text-red-500">
+                            Rahu/Ketu Dhosham is required
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex w-full flex-row gap-4">
-              <div className="w-full">
+              <div className="flex w-full flex-row gap-4">
                 <div className="w-full">
-                  <label className="block text-black font-medium mb-1">
-                    Foreign Interest
-                  </label>
-                  <select
-                    name="feature_preference"
-                    className="outline-none w-full px-4 py-2 border border-black rounded"
-                    onChange={(e) => handleInputChange(e, 'basicDetails')}
-                  >
-                    <option value="">Foreign Interest</option>
-                    <option value="Both">Both</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
+                  <div className="w-full">
+                    <label className="block text-black font-medium mb-1">
+                      Foreign Interest
+                    </label>
+                    <select
+                      name="feature_preference"
+                      className="outline-none w-full px-4 py-2 border border-black rounded"
+                      onChange={(e) => handleInputChange(e, 'basicDetails')}
+                    >
+                      <option value="">Foreign Interest</option>
+                      <option value="Both">Both</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  {errors.feature_preference && (
+                    <span className="text-red-500">
+                      Foreign Interest is required
+                    </span>
+                  )}
+                </div>
+              </div>
+              {/* <div className="w-full">
+    <div className="w-full">
+      <div className="w-full">
+        <div>
+          <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
+          <div className="flex justify-between items-center">
+            <div>
+              <input
+                type="checkbox"
+                id="feature_preference"
+                name="feature_preference"
+                value="Bachelors,Engineering"
+              />
+              <label htmlFor="feature_preference" className="pl-1">Bachelors,Engineering</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="feature_preference"
+                name="feature_preference"
+                value="Bachelors,Arts/science/commerce/B phil"
+              />
+              <label htmlFor="feature_preference" className="pl-1">Bachelors,Arts/science/commerce/B phil</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="feature_preference"
+                name="feature_preference"
+                value="Legal-BL/ML/LLb/LLM Others"
+              />
+              <label htmlFor="feature_preference" className="pl-1">Legal-BL/ML/LLb/LLM Others</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="feature_preference"
+                name="feature_preference"
+                value="Management - BBA/MBA/Others"
+              />
+              <label htmlFor="feature_preference" className="pl-1">Management - BBA/MBA/Others</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="feature_preference"
+                name="feature_preference"
+                value="Doctorate"
+              />
+              <label htmlFor="feature_preference" className="pl-1">Doctorate</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      {errors.feature_preference && <span className="text-red-500">Education Preference is required</span>}
+    </div>
+  </div> */}
+              <div className="w-full">
+                <div>
+                  <h5 className="text-[18px] text-black font-semibold mb-2">
+                    Profession
+                  </h5>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="feature_preference"
+                        name="feature_preference"
+                        value="employed"
+                      />
+                      <label htmlFor="feature_preference" className="pl-1">
+                        Employed
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="feature_preference"
+                        name="feature_preference"
+                        value="business"
+                      />
+                      <label htmlFor="feature_preference" className="pl-1">
+                        Business
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="feature_preference"
+                        name="feature_preference"
+                        value="student"
+                      />
+                      <label htmlFor="feature_preference" className="pl-1">
+                        Student
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="feature_preference"
+                        name="feature_preference"
+                        value="notWorking"
+                      />
+                      <label htmlFor="feature_preference" className="pl-1">
+                        Not Working
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="feature_preference"
+                        name="feature_preference"
+                        value="notMentioned"
+                      />
+                      <label htmlFor="feature_preference" className="pl-1">
+                        Not Mentioned
+                      </label>
+                    </div>
+                  </div>
                 </div>
                 {errors.feature_preference && (
                   <span className="text-red-500">
-                    Foreign Interest is required
+                    Profession Preference is required
                   </span>
                 )}
               </div>
-            </div>
-            
-            <div className="w-full">
-              <div>
-                <h5 className="text-[18px] text-black font-semibold mb-2">
-                  Profession
-                </h5>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="feature_preference"
-                      name="feature_preference"
-                      value="employed"
-                    />
-                    <label htmlFor="feature_preference" className="pl-1">
-                      Employed
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="feature_preference"
-                      name="feature_preference"
-                      value="business"
-                    />
-                    <label htmlFor="feature_preference" className="pl-1">
-                      Business
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="feature_preference"
-                      name="feature_preference"
-                      value="student"
-                    />
-                    <label htmlFor="feature_preference" className="pl-1">
-                      Student
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="feature_preference"
-                      name="feature_preference"
-                      value="notWorking"
-                    />
-                    <label htmlFor="feature_preference" className="pl-1">
-                      Not Working
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="feature_preference"
-                      name="feature_preference"
-                      value="notMentioned"
-                    />
-                    <label htmlFor="feature_preference" className="pl-1">
-                      Not Mentioned
-                    </label>
-                  </div>
-                </div>
-              </div>
-              {errors.feature_preference && (
-                <span className="text-red-500">
-                  Profession Preference is required
-                </span>
-              )}
-            </div>
-            {/* <div className="flex w-full flex-row gap-4">
+              {/* <div className="flex w-full flex-row gap-4">
     <div className="w-full">
       <div>
         <h5 className="text-[18px] text-primary font-semibold mb-2">Annual Income Preference</h5>
@@ -2906,7 +2958,7 @@ const ProfileForm = () => {
       {errors.feature_preference && <span className="text-red-500">Annual Income is required</span>}
     </div>
   </div> */}
-            {/* <div className="flex w-full flex-row gap-4">
+              {/* <div className="flex w-full flex-row gap-4">
     <div className="w-full">
       <div>
         <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
@@ -2952,175 +3004,175 @@ const ProfileForm = () => {
       {errors.feature_preference && <span className="text-red-500">Marital Status is required</span>}
     </div>
   </div> */}
-          
 
-          <div>
-            <h5 className="text-[18px] text-black font-semibold mb-2">
-              Marital Status
-            </h5>
-            <div className="flex justify-between items-center">
-              {maritalStatuses.map((status) => (
-                <div key={status.marital_sts_id}>
-                  <input
-                    type="checkbox"
-                    id={`maritalStatus-${status.marital_sts_id}`}
-                    value={status.marital_sts_id.toString()}
-                    checked={selectedMaritalStatuses.includes(
-                      status.marital_sts_id.toString(),
-                    )}
-                    onChange={(e) =>
-                      handleMaritalStatusChange(
-                        status.marital_sts_id.toString(),
-                        e.target.checked,
-                      )
-                    }
-                  />
-                  <label htmlFor={`maritalStatus-${status.marital_sts_id}`}>
-                    {status.marital_sts_name}
-                  </label>
+
+              <div>
+                <h5 className="text-[18px] text-black font-semibold mb-2">
+                  Marital Status
+                </h5>
+                <div className="flex justify-between items-center">
+                  {maritalStatuses.map((status) => (
+                    <div key={status.marital_sts_id}>
+                      <input
+                        type="checkbox"
+                        id={`maritalStatus-${status.marital_sts_id}`}
+                        value={status.marital_sts_id.toString()}
+                        checked={selectedMaritalStatuses.includes(
+                          status.marital_sts_id.toString(),
+                        )}
+                        onChange={(e) =>
+                          handleMaritalStatusChange(
+                            status.marital_sts_id.toString(),
+                            e.target.checked,
+                          )
+                        }
+                      />
+                      <label htmlFor={`maritalStatus-${status.marital_sts_id}`}>
+                        {status.marital_sts_name}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          <div>
-            <label className="text-[18px] text-black font-semibold mb-2">
-              Annual Income
-            </label>
-            <div className="grid grid-rows-1 grid-cols-4">
-              {annualIncome.map((option) => (
-                <div key={option.income_id} className="mb-2">
-                  <input
-                    type="checkbox"
-                    id={`annualIncome-${option.income_id}`}
-                    value={option.income_id.toString()}
-                    checked={selectedAnnualIncomes.includes(
-                      option.income_id.toString(),
-                    )}
-                    onChange={(e) =>
-                      handleAnnualIncomeChange(
-                        option.income_id.toString(),
-                        e.target.checked,
-                      )
-                    }
-                  />
-                  <label
-                    htmlFor={`annualIncome-${option.income_id}`}
-                    className="pl-1"
-                  >
-                    {option.income_description}
-                  </label>
+              <div>
+                <label className="text-[18px] text-black font-semibold mb-2">
+                  Annual Income
+                </label>
+                <div className="grid grid-rows-1 grid-cols-4">
+                  {annualIncome.map((option) => (
+                    <div key={option.income_id} className="mb-2">
+                      <input
+                        type="checkbox"
+                        id={`annualIncome-${option.income_id}`}
+                        value={option.income_id.toString()}
+                        checked={selectedAnnualIncomes.includes(
+                          option.income_id.toString(),
+                        )}
+                        onChange={(e) =>
+                          handleAnnualIncomeChange(
+                            option.income_id.toString(),
+                            e.target.checked,
+                          )
+                        }
+                      />
+                      <label
+                        htmlFor={`annualIncome-${option.income_id}`}
+                        className="pl-1"
+                      >
+                        {option.income_description}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+
+
+              <div>
+                <div className="justify-start items-center gap-x-5 text-black">
+                  {matchStars
+                    .sort((a, b) => b[0].match_count - a[0].match_count)
+                    .map((matchCountArray, index) => {
+                      const starAndRasi = matchCountArray.map((star) => ({
+                        id: star.id.toString(),
+                        star: star.matching_starname,
+                        rasi: star.matching_rasiname,
+                      }));
+
+                      const matchCountValue = matchCountArray[0].match_count;
+
+                      return (
+                        <MatchingStars
+                          key={index}
+                          initialPoruthas={`No of porutham ${matchCountValue}`}
+                          starAndRasi={starAndRasi}
+                          selectedStarIds={selectedStarIds}
+                          onCheckboxChange={handleCheckboxChange}
+                        />
+                      );
+                    })}
+                </div>
+              </div>
             </div>
-          </div>
-
-
-
-          <div>
-            <div className="justify-start items-center gap-x-5 text-black">
-              {matchStars
-                .sort((a, b) => b[0].match_count - a[0].match_count)
-                .map((matchCountArray, index) => {
-                  const starAndRasi = matchCountArray.map((star) => ({
-                    id: star.id.toString(),
-                    star: star.matching_starname,
-                    rasi: star.matching_rasiname,
-                  }));
-
-                  const matchCountValue = matchCountArray[0].match_count;
-
-                  return (
-                    <MatchingStars
-                      key={index}
-                      initialPoruthas={`No of porutham ${matchCountValue}`}
-                      starAndRasi={starAndRasi}
-                      selectedStarIds={selectedStarIds}
-                      onCheckboxChange={handleCheckboxChange}
-                    />
-                  );
-                })}
-            </div>
-          </div>
-          </div>
           )}
 
         </div>
 
         <div className='bg-white p-5 mb-10 rounded shadow-md'>
-        <h4 className="text-red-600 flex row items-center justify-between text-xl font-semibold text-black dark:text-white" onClick={toggleSection7}>
+          <h4 className="text-red-600 flex row items-center justify-between text-xl font-semibold text-black dark:text-white" onClick={toggleSection7}>
             {' '}
             Upload Images{' '}
             <svg className={`fill-current transform ${isUploadImagesOpen ? 'rotate-180' : ''}`} width={"20"} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z" fill=""></path></svg>
 
           </h4>
           {isUploadImagesOpen && (
-        <div className="w-full py-2">
-            {sections.map(({ label, sectionIndex, isMultiple }) => (
-              <div key={sectionIndex} className={`mb-8 ${sectionIndex > 0 ? 'inline-block w-48 mr-4' : ''}`}>
-                <h2 className="text-lg font-semibold mb-4">{label}</h2>
-                <div className={` ${sectionIndex > 0 ? '' : 'flex-col space-y-4'}`}>
-                  {isMultiple ? (
-                    <div className="grid grid-cols-5 gap-4">
-                      {Array.from({ length: 10 }).map((_, buttonIndex) => (
-                        <div key={buttonIndex} className="flex flex-col space-y-2">
-                          {/* <label className="block text-sm font-medium mb-1">
+            <div className="w-full py-2">
+              {sections.map(({ label, sectionIndex, isMultiple }) => (
+                <div key={sectionIndex} className={`mb-8 ${sectionIndex > 0 ? 'inline-block w-48 mr-4' : ''}`}>
+                  <h2 className="text-lg font-semibold mb-4">{label}</h2>
+                  <div className={` ${sectionIndex > 0 ? '' : 'flex-col space-y-4'}`}>
+                    {isMultiple ? (
+                      <div className="grid grid-cols-5 gap-4">
+                        {Array.from({ length: 10 }).map((_, buttonIndex) => (
+                          <div key={buttonIndex} className="flex flex-col space-y-2">
+                            {/* <label className="block text-sm font-medium mb-1">
                             Image
                           </label> */}
-                          <button
-                            type="button"
-                            className="px-4 py-2 bg-gray-200 text-sm font-medium border rounded"
-                            onClick={() => triggerFileInput(`fileInput${sectionIndex}-${buttonIndex}`)}
-                          >
-                            Image {buttonIndex + 1}
-                          </button>
-                          <input
-                            type="file"
-                            id={`fileInput${sectionIndex}-${buttonIndex}`}
-                            style={{ display: 'none' }}
-                            multiple
-                            onChange={(e) => handleFileChange(e, sectionIndex, buttonIndex)}
-                          />
-                          <div className="flex flex-col space-y-1 mt-2">
-                            {selectedFiles[sectionIndex][buttonIndex]?.map((fileName, fileIndex) => (
-                              <span key={fileIndex} className="text-sm">{fileName}</span>
-                            ))}
+                            <button
+                              type="button"
+                              className="px-4 py-2 bg-gray-200 text-sm font-medium border rounded"
+                              onClick={() => triggerFileInput(`fileInput${sectionIndex}-${buttonIndex}`)}
+                            >
+                              Image {buttonIndex + 1}
+                            </button>
+                            <input
+                              type="file"
+                              id={`fileInput${sectionIndex}-${buttonIndex}`}
+                              style={{ display: 'none' }}
+                              multiple
+                              onChange={(e) => handleFileChange(e, sectionIndex, buttonIndex)}
+                            />
+                            <div className="flex flex-col space-y-1 mt-2">
+                              {selectedFiles[sectionIndex][buttonIndex]?.map((fileName, fileIndex) => (
+                                <span key={fileIndex} className="text-sm">{fileName}</span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col space-y-2">
-                      {/* <label className="block text-sm font-medium mb-1">
-                        Choose File
-                      </label> */}
-                      <button
-                        type="button"
-                        className="w-full px-4 py-2 bg-gray-200 text-sm font-medium border rounded"
-                        onClick={() => triggerFileInput(`fileInput${sectionIndex}-0`)}
-                      >
-                        Select File
-                      </button>
-                      <input
-                        type="file"
-                        id={`fileInput${sectionIndex}-0`}
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleFileChange(e, sectionIndex)}
-                      />
-                      <div className="flex flex-col space-y-1 mt-2">
-                        {selectedFiles[sectionIndex]?.map((fileName, fileIndex) => (
-                          <span key={fileIndex} className="text-sm">{fileName}</span>
                         ))}
                       </div>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="flex flex-col space-y-2">
+                        {/* <label className="block text-sm font-medium mb-1">
+                        Choose File
+                      </label> */}
+                        <button
+                          type="button"
+                          className="w-full px-4 py-2 bg-gray-200 text-sm font-medium border rounded"
+                          onClick={() => triggerFileInput(`fileInput${sectionIndex}-0`)}
+                        >
+                          Select File
+                        </button>
+                        <input
+                          type="file"
+                          id={`fileInput${sectionIndex}-0`}
+                          style={{ display: 'none' }}
+                          onChange={(e) => handleFileChange(e, sectionIndex)}
+                        />
+                        <div className="flex flex-col space-y-1 mt-2">
+                          {selectedFiles[sectionIndex]?.map((fileName, fileIndex) => (
+                            <span key={fileIndex} className="text-sm">{fileName}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           )}
 
-          </div>
+        </div>
 
 
         <div className='w-full text-right'>

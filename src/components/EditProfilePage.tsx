@@ -667,10 +667,6 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
         </div>
-
-
-
-
         {/* //rasigrid */}
         <div>
           <div>
