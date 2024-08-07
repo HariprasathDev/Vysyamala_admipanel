@@ -453,7 +453,7 @@ const ProfileForm = () => {
   }, []);
 
 
-  //complextion
+  //complextion     
   useEffect(() => {
     const fetchComplexionStatus = async () => {
       try {
@@ -485,7 +485,7 @@ const ProfileForm = () => {
 
 
 
-  const handleInputChange1 = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleInputChange1 = (e: ChangeEvent<HTMLSelectElement>, p0: string) => {
     const countryId = e.target.value;
     setSelectedCountryId(countryId);
     console.log('Selected Country ID:', countryId);
@@ -790,17 +790,7 @@ const ProfileForm = () => {
     setSisterMarriedValues(values);
   };
 
-
-
-
-
-
-
-
-
   /*Form API ENDS*/
-
-
 
   const storedBirthStar = 25;
   console.log(storedBirthStar);
@@ -1169,14 +1159,18 @@ const ProfileForm = () => {
 
 
                 <div className="w-full">
+
                   <label className="block text-black font-medium mb-1">
                     Country
                   </label>
+
                   <select
                     name="Profile_country"
                     className="outline-none w-full px-4 py-2 border border-black rounded"
                     onChange={(e) => handleInputChange1(e, 'basicDetails')}
+
                   >
+
                     <option value="" >
                       -- Select your Country --
                     </option>
@@ -1192,6 +1186,7 @@ const ProfileForm = () => {
                   )}
                 </div>
               </div>
+
 
 
               <div className="flex w-full flex-row gap-4">
@@ -1219,11 +1214,6 @@ const ProfileForm = () => {
                   )}
                 </div>
 
-
-
-
-
-
                 <div className="w-full">
                   <Input
                     label={'Profile City'}
@@ -1234,12 +1224,6 @@ const ProfileForm = () => {
                     <span className="text-red-500">{errors.Profile_city}</span>
                   )}
                 </div>
-
-
-
-
-
-
 
               </div>
               <div className="flex w-full flex-row gap-4">
@@ -1277,10 +1261,6 @@ const ProfileForm = () => {
             </div>
           )}
         </div>
-
-
-
-
 
         <div className='bg-white p-5 mb-10 rounded shadow-md '>
           <h4 className="text-red-600 flex row items-center justify-between text-xl font-semibold text-black dark:text-white cursor-pointer  after-red-line::after" onClick={toggleSection2}>
@@ -1344,7 +1324,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'familyDetails')}
                   >
                     <option value="" disabled selected>
-                      -- Select Occupation --
+                      - - Select Occupation - -
                     </option>
                     {occupations.map((occupation) => (
                       <option key={occupation.occupation_id} value={occupation.occupation_description}>
@@ -1431,9 +1411,6 @@ const ProfileForm = () => {
                     </span>
                   )}
                 </div>
-
-
-
 
                 <div className="w-full">
                   <Input
@@ -1609,20 +1586,6 @@ const ProfileForm = () => {
 
               </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               <div className="flex w-full flex-row gap-4">
                 <div className="w-full">
                   <label className="block text-black font-medium mb-1">
@@ -1646,6 +1609,7 @@ const ProfileForm = () => {
                     <span className="text-red-600">Property Worth is required</span>
                   )}
                 </div>
+
                 <div className="w-full">
                   <Input
                     label={'Suya Gothram'}
@@ -1735,6 +1699,7 @@ const ProfileForm = () => {
                     <span className="text-red-500">{errors.highest_education}</span>
                   )}
                 </div>
+                
                 <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     UG Degree (Only if masters selected in highest education)
@@ -1962,7 +1927,6 @@ const ProfileForm = () => {
                 <div>
                 </div>
 
-
                 <div className="flex w-full flex-row gap-4">
                   <div className='w-full'>
                     <label htmlFor="lagnam" className="block text-black font-medium mb-1">
@@ -2140,30 +2104,7 @@ const ProfileForm = () => {
           {isPartnerPreferenceOpen && (
             <div className="flex flex-col gap-5">
               <div className="flex w-full flex-row gap-4 pt-2">
-                {/* <div className="w-full">
-                <div className="w-full">
-                  <label className="block text-black font-medium mb-1">
-                    Select your Marital Status
-                  </label>
-                  <select
-                    name="feature_preference"
-                    className="outline-none w-full px-4 py-2 border border-black rounded"
-                    onChange={(e) => handleInputChange(e, 'basicDetails')}
-                  >
-                    <option value="" selected disabled>
-                      Select your Marital Status
-                    </option>
-                    {maritalStatuses.map((option) => (
-                      <option
-                        key={option.marital_sts_id}
-                        value={option.marital_sts_id}
-                      >
-                        {option.marital_sts_name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div> */}
+
                 <div className="w-full">
                   <Input
                     label={'Height from'}
@@ -2267,63 +2208,6 @@ const ProfileForm = () => {
                 </div>
               </div>
 
-              {/* <div className="w-full">
-              <div className="w-full">
-                <div className="w-full">
-                  <div>
-                    <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <input
-                          type="checkbox"
-                          id="Bachelors,Engineering"
-                          name="pref_education"
-                          value="Bachelors,Engineering"
-                        />
-                        <label htmlFor="Bachelors,Engineering" className="pl-1">Bachelors,Engineering</label>
-                      </div>
-                      <div>
-                        <input
-                          type="checkbox"
-                          id="Bachelors,Arts/science/commerce/B phil"
-                          name="pref_education"
-                          value="Bachelors,Arts/science/commerce/B phil"
-                        />
-                        <label htmlFor="Bachelors,Arts/science/commerce/B phil" className="pl-1">Bachelors,Arts/science/commerce/B phil</label>
-                      </div>
-                      <div>
-                        <input
-                          type="checkbox"
-                          id="Legal-BL/ML/LLb/LLM Others"
-                          name="pref_education"
-                          value="Legal-BL/ML/LLb/LLM Others"
-                        />
-                        <label htmlFor="Legal-BL/ML/LLb/LLM Others" className="pl-1">Legal-BL/ML/LLb/LLM Others</label>
-                      </div>
-                      <div>
-                        <input
-                          type="checkbox"
-                          id="Management - BBA/MBA/Others"
-                          name="pref_education"
-                          value="Management - BBA/MBA/Others"
-                        />
-                        <label htmlFor="Management - BBA/MBA/Others" className="pl-1">Management - BBA/MBA/Others</label>
-                      </div>
-                      <div>
-                        <input
-                          type="checkbox"
-                          id="Doctorate"
-                          name="pref_education"
-                          value="Doctorate"
-                        />
-                        <label htmlFor="Doctorate" className="pl-1">Doctorate</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
               <div className="w-full">
                 <div>
                   <h5 className="text-[18px] text-black font-semibold mb-2">
@@ -2389,125 +2273,6 @@ const ProfileForm = () => {
                 </div>
               </div>
 
-              {/* <div className="flex w-full flex-row gap-4">
-              <div className="w-full">
-                <div>
-                  <h5 className="text-[18px] text-primary font-semibold mb-2">Annual Income Preference</h5>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="No income"
-                        name="pref_anual_income"
-                        value="No income"
-                      />
-                      <label htmlFor="No income" className="pl-1">No income</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Under 50000"
-                        name="pref_anual_income"
-                        value="Under 50000"
-                      />
-                      <label htmlFor="Under 50000" className="pl-1">Under 50000</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Rs 50,001 - 1,00,000"
-                        name="pref_anual_income"
-                        value="Rs 50,001 - 1,00,000"
-                      />
-                      <label htmlFor="Rs 50,001 - 1,00,000" className="pl-1">Rs 50,001 - 1,00,000</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Rs 100,001 - 2,00,000"
-                        name="pref_anual_income"
-                        value="Rs 100,001 - 2,00,000"
-                      />
-                      <label htmlFor="Rs 100,001 - 2,00,000" className="pl-1">Rs 100,001 - 2,00,000</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Rs 3,00,001 - 4,00,000"
-                        name="pref_anual_income"
-                        value="Rs 3,00,001 - 4,00,000"
-                      />
-                      <label htmlFor="Rs 3,00,001 - 4,00,000" className="pl-1">Rs 3,00,001 - 4,00,000</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Rs 4,00,001 - 5,00,000"
-                        name="pref_anual_income"
-                        value="Rs 4,00,001 - 5,00,000"
-                      />
-                      <label htmlFor="Rs 4,00,001 - 5,00,000" className="pl-1">Rs 4,00,001 - 5,00,000</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Rs 5,00,001 - 75,00,000"
-                        name="pref_anual_income"
-                        value="Rs 5,00,001 - 75,00,000"
-                      />
-                      <label htmlFor="Rs 5,00,001 - 75,00,000" className="pl-1">Rs 5,00,001 - 75,00,000</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
-              {/* <div className="flex w-full flex-row gap-4">
-              <div className="w-full">
-                <div>
-                  <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Divorced"
-                        name="pref_marital_status"
-                        value="Divorced"
-                      />
-                      <label htmlFor="Divorced" className="pl-1">Divorced</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Not married"
-                        name="pref_marital_status"
-                        value="Not married"
-                      />
-                      <label htmlFor="Not married" className="pl-1">Not married</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Widow"
-                        name="pref_marital_status"
-                        value="Widow"
-                      />
-                      <label htmlFor="Widow" className="pl-1">Widow</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Widower"
-                        name="pref_marital_status"
-                        value="Widower"
-                      />
-                      <label htmlFor="Widower" className="pl-1">Widower</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
               <div>
                 <h5 className="text-[18px] text-black font-semibold mb-2">
                   Marital Status
@@ -2569,8 +2334,6 @@ const ProfileForm = () => {
                 </div>
               </div>
 
-
-
               <div>
                 <div className="justify-start items-center gap-x-5 text-black">
                   {matchStars
@@ -2615,35 +2378,7 @@ const ProfileForm = () => {
           {isFeaturePreferenceOpen && (
             <div className="flex flex-col gap-5 pt-2">
               <div className="flex w-full flex-row gap-4">
-                {/* <div className="w-full">
-      <div className="w-full">
-        <label className="block text-black font-medium mb-1">
-          Select your Marital Status
-        </label>
-        <select
-          name="feature_preference"
-          className="outline-none w-full px-4 py-2 border border-black rounded"
-          onChange={(e) => handleInputChange(e, 'basicDetails')}
-        >
-          <option value="" selected disabled>
-            Select your Marital Status
-          </option>
-          {maritalStatuses.map((option) => (
-            <option
-              key={option.marital_sts_id}
-              value={option.marital_sts_id}
-            >
-              {option.marital_sts_name}
-            </option>
-          ))}
-        </select>
-        {errors.feature_preference && (
-          <span className="text-red-500">
-            {errors.feature_preference}
-          </span>
-        )}
-      </div>
-    </div> */}
+
                 <div className="w-full">
                   <Input
                     label={'Height from'}
@@ -2759,63 +2494,7 @@ const ProfileForm = () => {
                   )}
                 </div>
               </div>
-              {/* <div className="w-full">
-    <div className="w-full">
-      <div className="w-full">
-        <div>
-          <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
-          <div className="flex justify-between items-center">
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Bachelors,Engineering"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Bachelors,Engineering</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Bachelors,Arts/science/commerce/B phil"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Bachelors,Arts/science/commerce/B phil</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Legal-BL/ML/LLb/LLM Others"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Legal-BL/ML/LLb/LLM Others</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Management - BBA/MBA/Others"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Management - BBA/MBA/Others</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="feature_preference"
-                name="feature_preference"
-                value="Doctorate"
-              />
-              <label htmlFor="feature_preference" className="pl-1">Doctorate</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      {errors.feature_preference && <span className="text-red-500">Education Preference is required</span>}
-    </div>
-  </div> */}
+
               <div className="w-full">
                 <div>
                   <h5 className="text-[18px] text-black font-semibold mb-2">
@@ -2885,125 +2564,6 @@ const ProfileForm = () => {
                   </span>
                 )}
               </div>
-              {/* <div className="flex w-full flex-row gap-4">
-    <div className="w-full">
-      <div>
-        <h5 className="text-[18px] text-primary font-semibold mb-2">Annual Income Preference</h5>
-        <div className="flex justify-between items-center">
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="No income"
-            />
-            <label htmlFor="feature_preference" className="pl-1">No income</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Under 50000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Under 50000</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Rs 50,001 - 1,00,000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Rs 50,001 - 1,00,000</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Rs 100,001 - 2,00,000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Rs 100,001 - 2,00,000</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Rs 3,00,001 - 4,00,000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Rs 3,00,001 - 4,00,000</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Rs 4,00,001 - 5,00,000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Rs 4,00,001 - 5,00,000</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Rs 5,00,001 - 75,00,000"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Rs 5,00,001 - 75,00,000</label>
-          </div>
-        </div>
-      </div>
-      {errors.feature_preference && <span className="text-red-500">Annual Income is required</span>}
-    </div>
-  </div> */}
-              {/* <div className="flex w-full flex-row gap-4">
-    <div className="w-full">
-      <div>
-        <h5 className="text-[18px] text-primary font-semibold mb-2">Marital Status</h5>
-        <div className="flex justify-between items-center">
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Divorced"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Divorced</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Not married"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Not married</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Widow"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Widow</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="feature_preference"
-              name="feature_preference"
-              value="Widower"
-            />
-            <label htmlFor="feature_preference" className="pl-1">Widower</label>
-          </div>
-        </div>
-      </div>
-      {errors.feature_preference && <span className="text-red-500">Marital Status is required</span>}
-    </div>
-  </div> */}
 
 
               <div>

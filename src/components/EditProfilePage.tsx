@@ -89,7 +89,7 @@ const EditProfilePage: React.FC = () => {
 
   const [occupations, setOccupations] = useState<Occupation[]>([]);
 
-    const [complexionOptions, setComplexionOptions] = useState<ComplexionOption[]>([]);
+  const [complexionOptions, setComplexionOptions] = useState<ComplexionOption[]>([]);
 
   useEffect(() => {
     if (!ContentId) {
@@ -392,8 +392,6 @@ const EditProfilePage: React.FC = () => {
           </div>
         </div>
 
-
-
         <div className="form-container">
           <div className="form-group" key="father_name">
             <label htmlFor="father_name">Father's Name</label>
@@ -438,9 +436,6 @@ const EditProfilePage: React.FC = () => {
               onChange={handleFamilyChange}
             />
           </div>
-
-
-
 
           <div className="form-group" key="Profile_complexion">
             <label htmlFor="Profile_complexion">Mother's Occupation</label>

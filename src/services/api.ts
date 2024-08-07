@@ -3,10 +3,15 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8000/api'; // Replace with your actual API URL
 
 export const getRecords = () => axios.get(`${API_URL}/logindetails_temp/`);
+
 export const addRecord = (data: any) => axios.post(`${API_URL}/logindetails_temp/`, data);
+
 export const updateRecord = (id: string, data: any) => axios.put(`${API_URL}/logindetails_temp/${id}/`, data);
+
 export const deleteRecord = (id: string) => axios.delete(`${API_URL}/logindetails_temp/${id}/`);
+
 export const approveRecord = (id: string) => axios.post(`${API_URL}/approve/${id}/`);
+
 export const disapproveRecord = (id: string) => axios.post(`${API_URL}/disapprove/${id}/`);
 
 export const getCountries = async () => {
@@ -24,6 +29,7 @@ export const updateCountry = async (id: string, country: any) => {
 export const deleteCountry = async (id: string) => {
     return await axios.delete(`${API_URL}/countries/${id}`);
 };
+// 
 // State API
 export const getStates = async (countryId: string) => {
     return await axios.get(`${API_URL}/countries/${countryId}/states`);
@@ -59,7 +65,6 @@ export const deleteDistrict = async (countryId: string, stateId: string, distric
 };
 
 
-
 // Religions API
 export const getreligions = async () => {
     return await axios.get(`${API_URL}/religions`);
@@ -93,7 +98,6 @@ export const deleteCaste = async (id: string) => {
     return await axios.delete(`${API_URL}/castes/${id}`);
 };
 
-
 // Profile Holders API
 export const getProfileHolders = async () => {
     return await axios.get(`${API_URL}/profile-holders`);
@@ -110,7 +114,6 @@ export const updateProfileHolder = async (id: string, profileHolder: any) => {
 export const deleteProfileHolder = async (id: string) => {
     return await axios.delete(`${API_URL}/profile-holders/${id}`);
 };
-
 
 
 // Parents Occupations API
@@ -147,7 +150,7 @@ export const deleteHighestEducation = async (id: string) => {
     return await axios.delete(`${API_URL}/highest-educations/${id}`);
 };
 
-// UG Degrees API
+/// UG Degrees API
 export const getUgDegrees = async () => {
     return await axios.get(`${API_URL}/ug-degrees`);
 };
@@ -199,6 +202,7 @@ export const deletePlaceOfBirth = async (id: string) => {
 };
 
 // Birth Stars API
+
 export const getBirthStars = async () => {
     return await axios.get(`${API_URL}/birth-stars`);
 };
@@ -248,6 +252,7 @@ export const updateLagnam = async (id: string, lagnam: any) => {
 export const deleteLagnam = async (id: string) => {
     return await axios.delete(`${API_URL}/lagnams/${id}`);
 };
+
 
 // Dasa Balances API
 export const getDasaBalances = async () => {
@@ -310,37 +315,37 @@ export const deleteFamilyStatus = async (id: string) => {
 };
 
 
-export const apiService = {
-    getBirthStars: () => axios.get(`${API_URL}/birth-stars/`),
-    getPlaceOfBirths: () => axios.get(`${API_URL}/place-of-births/`),
-    getRasis: () => axios.get(`${API_URL}/rasis/`),
-    getLagnams: () => axios.get(`${API_URL}/lagnams/`),
-    getDasaBalances: () => axios.get(`${API_URL}/dasa-balances/`),
+// export const apiService = {
+//     getBirthStars: () => axios.get(`${API_URL}/birth-stars/`),
+//     getPlaceOfBirths: () => axios.get(`${API_URL}/place-of-births/`),
+//     getRasis: () => axios.get(`${API_URL}/rasis/`),
+//     getLagnams: () => axios.get(`${API_URL}/lagnams/`),
+//     getDasaBalances: () => axios.get(`${API_URL}/dasa-balances/`),
   
-    getBirthStar: (id: number) => axios.get(`${API_URL}/birth-stars/${id}/`),
-    getPlaceOfBirth: (id: number) => axios.get(`${API_URL}/place-of-births/${id}/`),
-    getRasi: (id: string) => axios.get(`${API_URL}/rasis/${id}/`),
-    getLagnam: (id: number) => axios.get(`${API_URL}/lagnams/${id}/`),
-    getDasaBalance: (id: number) => axios.get(`${API_URL}/dasa-balances/${id}/`),
+//     getBirthStar: (id: number) => axios.get(`${API_URL}/birth-stars/${id}/`),
+//     getPlaceOfBirth: (id: number) => axios.get(`${API_URL}/place-of-births/${id}/`),
+//     getRasi: (id: string) => axios.get(`${API_URL}/rasis/${id}/`),
+//     getLagnam: (id: number) => axios.get(`${API_URL}/lagnams/${id}/`),
+//     getDasaBalance: (id: number) => axios.get(`${API_URL}/dasa-balances/${id}/`),
   
-    createBirthStar: (data: any) => axios.post(`${API_URL}/birth-stars/`, data),
-    createPlaceOfBirth: (data: any) => axios.post(`${API_URL}/place-of-births/`, data),
-    createRasi: (data: any) => axios.post(`${API_URL}/rasis/`, data),
-    createLagnam: (data: any) => axios.post(`${API_URL}/lagnams/`, data),
-    createDasaBalance: (data: any) => axios.post(`${API_URL}/dasa-balances/`, data),
+//     createBirthStar: (data: any) => axios.post(`${API_URL}/birth-stars/`, data),
+//     createPlaceOfBirth: (data: any) => axios.post(`${API_URL}/place-of-births/`, data),
+//     createRasi: (data: any) => axios.post(`${API_URL}/rasis/`, data),
+//     createLagnam: (data: any) => axios.post(`${API_URL}/lagnams/`, data),
+//     createDasaBalance: (data: any) => axios.post(`${API_URL}/dasa-balances/`, data),
   
-    updateBirthStar: (id: number, data: any) => axios.put(`${API_URL}/birth-stars/${id}/`, data),
-    updatePlaceOfBirth: (id: number, data: any) => axios.put(`${API_URL}/place-of-births/${id}/`, data),
-    updateRasi: (id: string, data: any) => axios.put(`${API_URL}/rasis/${id}/`, data),
-    updateLagnam: (id: number, data: any) => axios.put(`${API_URL}/lagnams/${id}/`, data),
-    updateDasaBalance: (id: number, data: any) => axios.put(`${API_URL}/dasa-balances/${id}/`, data),
+//     updateBirthStar: (id: number, data: any) => axios.put(`${API_URL}/birth-stars/${id}/`, data),
+//     updatePlaceOfBirth: (id: number, data: any) => axios.put(`${API_URL}/place-of-births/${id}/`, data),
+//     updateRasi: (id: string, data: any) => axios.put(`${API_URL}/rasis/${id}/`, data),
+//     updateLagnam: (id: number, data: any) => axios.put(`${API_URL}/lagnams/${id}/`, data),
+//     updateDasaBalance: (id: number, data: any) => axios.put(`${API_URL}/dasa-balances/${id}/`, data),
   
-    deleteBirthStar: (id: number) => axios.delete(`${API_URL}/birth-stars/${id}/`),
-    deletePlaceOfBirth: (id: number) => axios.delete(`${API_URL}/place-of-births/${id}/`),
-    deleteRasi: (id: string) => axios.delete(`${API_URL}/rasis/${id}/`),
-    deleteLagnam: (id: number) => axios.delete(`${API_URL}/lagnams/${id}/`),
-    deleteDasaBalance: (id: number) => axios.delete(`${API_URL}/dasa-balances/${id}/`)
-};
+//     deleteBirthStar: (id: number) => axios.delete(`${API_URL}/birth-stars/${id}/`),
+//     deletePlaceOfBirth: (id: number) => axios.delete(`${API_URL}/place-of-births/${id}/`),
+//     deleteRasi: (id: string) => axios.delete(`${API_URL}/rasis/${id}/`),
+//     deleteLagnam: (id: number) => axios.delete(`${API_URL}/lagnams/${id}/`),
+//     deleteDasaBalance: (id: number) => axios.delete(`${API_URL}/dasa-balances/${id}/`)
+// };
 
 
 

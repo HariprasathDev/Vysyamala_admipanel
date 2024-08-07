@@ -308,7 +308,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
                           </li>
 
-                          
+
 
 
                           <li>
@@ -377,9 +377,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             </NavLink>
                           </li>
 
-                          
 
-                          
+
+
 
 
 
@@ -493,7 +493,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 
               {/* <!-- Menu Item Religions and Community --> */}
-              {/* <SidebarLinkGroup
+              <SidebarLinkGroup
                 activeCondition={
                   pathname === '/religions-community' ||
                   pathname.includes('religions-community')
@@ -536,13 +536,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         </svg>
                       </NavLink>
 
-                 
+
                       <div
                         className={`translate transform overflow-hidden ${!open && 'hidden'
                           }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-                      
+
                           <li>
                             <NavLink
                               to="/ReligionTable"
@@ -569,13 +569,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                         </ul>
                       </div>
-                     
+
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup> */}
+              </SidebarLinkGroup>
               {/* <!-- Menu Item Religions and Community End --> */}
-               {/* Dropdown Menu End */}
+              {/* Dropdown Menu End */}
 
               {/* <!-- Menu Item Horoscope Master --> */}
               <SidebarLinkGroup
@@ -685,6 +685,165 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   );
                 }}
               </SidebarLinkGroup>
+
+
+
+              <SidebarLinkGroup
+                activeCondition={
+                  pathname === '/profile-master' ||
+                  pathname.includes('profile-master')
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <React.Fragment>
+                      {/* Main Menu Item */}
+                      <NavLink
+                        to="#"
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/profile-master' ||
+                          pathname.includes('profile-master'))
+                          }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+                        }}
+                      >
+                        {/* Icon (You can add your own icon here) */}
+
+                        <CgProfile />
+                        Profile Master
+                        <svg
+                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
+                            }`}
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                            fill=""
+                          />
+                        </svg>
+                      </NavLink>
+
+                      {/* Dropdown Menu Start */}
+                      <div className={`translate transform overflow-hidden ${!open && 'hidden'}`}>
+                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                          {/* Submenu Items */}
+                          <li>
+                            <NavLink
+                              to="/ProfileholderTable"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Profile Holder
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/profile-master/marital-status"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Marital Status
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/profile-master/height"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Height
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/profile-master/complexion"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Complexion
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="ParentsoccupationTable"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Parents Occupation
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/HighesteducationsTable"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Highest Education
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/UgdegreeTable"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Ug Degree
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/AnnualincomesTable"
+                              className={({ isActive }) =>
+                                `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ${isActive && '!text-black'
+                                }`
+                              }
+                            >
+                              <GoDot />
+                              Annual Income
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
+                      {/* Dropdown Menu End */}
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
+
+
+
+
+
+
+
               <SidebarLinkGroup
                 activeCondition={
                   pathname === '/family-master' ||
