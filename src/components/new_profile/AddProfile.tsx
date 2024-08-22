@@ -140,7 +140,7 @@ const ProfileForm = () => {
   };
 
   const initialPartnerPreferences = {
-    pref_age_differences: '',
+    // pref_age_differences: '',
     from_month: '',
     from_year: '',
     age_pref: '',
@@ -223,13 +223,13 @@ const ProfileForm = () => {
       case 'ancestor_origin':
       case 'about_family':
       case 'age_pref':
-        return value.trim() === '' ? 'This field is required' : '';
+        return value.trim() === '' ? 'This field is ' : '';
       case 'father_occupation':
       case 'mother_occupation':
       case 'property_worth':
-        return value === '' ? 'This field is required' : '';
+        return value === '' ? 'This field is ' : '';
       case 'Pysically_changed':
-        return value === '' ? 'This field is required' : '';
+        return value === '' ? 'This field is ' : '';
       case 'highest_education':
       case 'ug_degeree':
       case 'about_edu':
@@ -238,9 +238,9 @@ const ProfileForm = () => {
       case 'work_state':
       case 'work_pincode':
       case 'career_plans':
-        return value === '' ? 'This field is required' : '';
+        return value === '' ? 'This field is ' : '';
       default:
-        return value.trim() === '' ? 'This field is required' : '';
+        return value.trim() === '' ? 'This field is ' : '';
     }
   };
   const handleCheckboxChange = (updatedIds: string[]) => {
@@ -453,7 +453,7 @@ const ProfileForm = () => {
   }, []);
 
 
-  //complextion     
+  //complextion
   useEffect(() => {
     const fetchComplexionStatus = async () => {
       try {
@@ -485,7 +485,7 @@ const ProfileForm = () => {
 
 
 
-  const handleInputChange1 = (e: ChangeEvent<HTMLSelectElement>, p0: string) => {
+  const handleInputChange1 = (e: ChangeEvent<HTMLSelectElement>) => {
     const countryId = e.target.value;
     setSelectedCountryId(countryId);
     console.log('Selected Country ID:', countryId);
@@ -618,6 +618,7 @@ const ProfileForm = () => {
     console.log('Selected Birth Star ID:', selectedId);
   };
 
+  
 
   useEffect(() => {
     if (selectedBirthStarId) {
@@ -790,7 +791,17 @@ const ProfileForm = () => {
     setSisterMarriedValues(values);
   };
 
+
+
+
+
+
+
+
+
   /*Form API ENDS*/
+
+
 
   const storedBirthStar = 25;
   console.log(storedBirthStar);
@@ -1146,7 +1157,7 @@ const ProfileForm = () => {
               }
 
               <div className="flex w-full flex-row gap-4">
-                <div className="w-full">
+                {/* <div className="w-full">
                   <Input
                     label={'Address'}
                     name="Profile_address"
@@ -1155,22 +1166,18 @@ const ProfileForm = () => {
                   {errors.Profile_address && (
                     <span className="text-red-500">{errors.Profile_address}</span>
                   )}
-                </div>
+                </div> */}
 
 
-                <div className="w-full">
-
+                {/* <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     Country
                   </label>
-
                   <select
                     name="Profile_country"
                     className="outline-none w-full px-4 py-2 border border-black rounded"
                     onChange={(e) => handleInputChange1(e, 'basicDetails')}
-
                   >
-
                     <option value="" >
                       -- Select your Country --
                     </option>
@@ -1184,13 +1191,12 @@ const ProfileForm = () => {
                   {errors.Profile_country && (
                     <span className="text-red-500">{errors.Profile_country}</span>
                   )}
-                </div>
+                </div> */}
               </div>
 
 
-
               <div className="flex w-full flex-row gap-4">
-                <div className="w-full">
+                {/* <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     State (Based on country selection)
                   </label>
@@ -1212,9 +1218,14 @@ const ProfileForm = () => {
                   {errors.Profile_state && (
                     <span className="text-red-500">{errors.Profile_state}</span>
                   )}
-                </div>
+                </div> */}
 
-                <div className="w-full">
+
+
+
+
+
+                {/* <div className="w-full">
                   <Input
                     label={'Profile City'}
                     name="Profile_address"
@@ -1223,7 +1234,13 @@ const ProfileForm = () => {
                   {errors.Profile_city && (
                     <span className="text-red-500">{errors.Profile_city}</span>
                   )}
-                </div>
+                </div> */}
+
+
+
+
+
+
 
               </div>
               <div className="flex w-full flex-row gap-4">
@@ -1261,6 +1278,10 @@ const ProfileForm = () => {
             </div>
           )}
         </div>
+
+
+
+
 
         <div className='bg-white p-5 mb-10 rounded shadow-md '>
           <h4 className="text-red-600 flex row items-center justify-between text-xl font-semibold text-black dark:text-white cursor-pointer  after-red-line::after" onClick={toggleSection2}>
@@ -1324,7 +1345,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'familyDetails')}
                   >
                     <option value="" disabled selected>
-                      - - Select Occupation - -
+                      -- Select Occupation --
                     </option>
                     {occupations.map((occupation) => (
                       <option key={occupation.occupation_id} value={occupation.occupation_description}>
@@ -1407,10 +1428,13 @@ const ProfileForm = () => {
                   <label className="text-black px-4">No</label>
                   {errors.Pysically_changed && (
                     <span className="text-red-600">
-                      Physically Challenged is required
+                      Physically Challenged is 
                     </span>
                   )}
                 </div>
+
+
+
 
                 <div className="w-full">
                   <Input
@@ -1586,6 +1610,20 @@ const ProfileForm = () => {
 
               </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <div className="flex w-full flex-row gap-4">
                 <div className="w-full">
                   <label className="block text-black font-medium mb-1">
@@ -1606,10 +1644,9 @@ const ProfileForm = () => {
                     ))}
                   </select>
                   {errors.property_worth && (
-                    <span className="text-red-600">Property Worth is required</span>
+                    <span className="text-red-600">Property Worth is </span>
                   )}
                 </div>
-
                 <div className="w-full">
                   <Input
                     label={'Suya Gothram'}
@@ -1657,7 +1694,7 @@ const ProfileForm = () => {
                   ></textarea>
                   {errors.about_family && (
                     <span className="text-red-600">
-                      About my Family is required
+                      About my Family is 
                     </span>
                   )}
                 </div>
@@ -1699,7 +1736,6 @@ const ProfileForm = () => {
                     <span className="text-red-500">{errors.highest_education}</span>
                   )}
                 </div>
-                
                 <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     UG Degree (Only if masters selected in highest education)
@@ -1784,7 +1820,7 @@ const ProfileForm = () => {
                 Work Location
               </h4>
               <div className="flex w-full flex-row gap-4">
-                <div className="w-full">
+                {/* <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     Country
                   </label>
@@ -1806,10 +1842,10 @@ const ProfileForm = () => {
                   {errors.work_country && (
                     <span className="text-red-500">{errors.work_country}</span>
                   )}
-                </div>
+                </div> */}
 
 
-                <div className="w-full">
+                {/* <div className="w-full">
                   <label className="block text-black font-medium mb-1">
                     State (Based on country selection)
                   </label>
@@ -1831,7 +1867,7 @@ const ProfileForm = () => {
                   {errors.work_state && (
                     <span className="text-red-500">{errors.work_state}</span>
                   )}
-                </div>
+                </div> */}
               </div>
 
 
@@ -1926,6 +1962,7 @@ const ProfileForm = () => {
                 </div>
                 <div>
                 </div>
+
 
                 <div className="flex w-full flex-row gap-4">
                   <div className='w-full'>
@@ -2104,7 +2141,6 @@ const ProfileForm = () => {
           {isPartnerPreferenceOpen && (
             <div className="flex flex-col gap-5">
               <div className="flex w-full flex-row gap-4 pt-2">
-
                 <div className="w-full">
                   <Input
                     label={'Height from'}
@@ -2112,7 +2148,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'partnerPreferences')}
                   />
                   {errors.age_pref && (
-                    <span className="text-red-500">From Month is required</span>
+                    <span className="text-red-500">From Month is </span>
                   )}
                 </div>
                 <div className="w-full">
@@ -2122,7 +2158,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'partnerPreferences')}
                   />
                   {errors.from_year && (
-                    <span className="text-red-500">From Year is required</span>
+                    <span className="text-red-500">From Year is </span>
                   )}
                 </div>
                 <div className="w-full">
@@ -2146,7 +2182,7 @@ const ProfileForm = () => {
                   />
                   {errors.pref_height_from && (
                     <span className="text-red-500">
-                      Height Preference is required
+                      Height Preference is 
                     </span>
                   )}
                 </div>
@@ -2207,6 +2243,8 @@ const ProfileForm = () => {
                   </div>
                 </div>
               </div>
+
+
 
               <div className="w-full">
                 <div>
@@ -2273,6 +2311,8 @@ const ProfileForm = () => {
                 </div>
               </div>
 
+
+
               <div>
                 <h5 className="text-[18px] text-black font-semibold mb-2">
                   Marital Status
@@ -2334,6 +2374,8 @@ const ProfileForm = () => {
                 </div>
               </div>
 
+
+
               <div>
                 <div className="justify-start items-center gap-x-5 text-black">
                   {matchStars
@@ -2386,7 +2428,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'partnerPreferences')}
                   />
                   {errors.age_pref && (
-                    <span className="text-red-500">From Month is required</span>
+                    <span className="text-red-500">From Month is </span>
                   )}
                 </div>
                 <div className="w-full">
@@ -2396,7 +2438,7 @@ const ProfileForm = () => {
                     onChange={(e) => handleInputChange(e, 'partnerPreferences')}
                   />
                   {errors.from_year && (
-                    <span className="text-red-500">From Year is required</span>
+                    <span className="text-red-500">From Year is </span>
                   )}
                 </div>
                 <div className="w-full">
@@ -2420,7 +2462,7 @@ const ProfileForm = () => {
                   />
                   {errors.feature_preference && (
                     <span className="text-red-500">
-                      Height Preference is required
+                      Height Preference is 
                     </span>
                   )}
                 </div>
@@ -2439,7 +2481,7 @@ const ProfileForm = () => {
                       <option value="No">No</option>
                     </select>
                     {errors.feature_preference && (
-                      <span className="text-red-500">required</span>
+                      <span className="text-red-500"></span>
                     )}
                   </div>
                 </div>
@@ -2461,7 +2503,7 @@ const ProfileForm = () => {
                         </select>
                         {errors.feature_preference && (
                           <span className="text-red-500">
-                            Rahu/Ketu Dhosham is required
+                            Rahu/Ketu Dhosham is 
                           </span>
                         )}
                       </div>
@@ -2489,7 +2531,7 @@ const ProfileForm = () => {
                   </div>
                   {errors.feature_preference && (
                     <span className="text-red-500">
-                      Foreign Interest is required
+                      Foreign Interest is 
                     </span>
                   )}
                 </div>
@@ -2560,10 +2602,11 @@ const ProfileForm = () => {
                 </div>
                 {errors.feature_preference && (
                   <span className="text-red-500">
-                    Profession Preference is required
+                    Profession Preference is 
                   </span>
                 )}
               </div>
+              
 
 
               <div>

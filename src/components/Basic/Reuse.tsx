@@ -22,35 +22,37 @@ import {
   Add as AddIcon,
 } from '@mui/icons-material';
 
-interface BirthStar {
-  id: number;
-  star: string;
-  tamil_series: string;
-  telugu_series: string;
-  kannada_series: string;
+interface ColumnConfig<T> {
+  field: keyof T;
+  headerName: string;
+  sortable?: boolean;
 }
 
-interface BasicTableProps {
-  birthStar: BirthStar[];
+interface BasicTableProps<T> {
+  data: T[];
+  columns: ColumnConfig<T>[];
   handleSearchChange: (query: string) => void;
-  handleEdit: (star: BirthStar) => void;
-  handleDelete: (id: number) => void;
+  handleEdit: (item: T) => void;
+  handleDelete: (id: keyof T) => void;
   setShowPopup: (show: boolean) => void;
+  idField: keyof T;
+  title:string
 }
 
-export default function BasicTable({
-  birthStar,
+export default function Reuse<T>({
+  data,
+  columns,
   handleSearchChange,
   handleEdit,
   handleDelete,
   setShowPopup,
-}: BasicTableProps) {
+  idField,
+  title
+}: BasicTableProps<T>) {
   const [searchQuery, setSearchQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortField, setSortField] = useState<
-    'star' | 'tamil_series' | 'telugu_series' | 'kannada_series'
-  >('star');
+  const [sortField, setSortField] = useState<keyof T>(columns[0].field);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   const handleSelectChange = (e: React.ChangeEvent<{ value: unknown }>) => {
@@ -64,9 +66,7 @@ export default function BasicTable({
     handleSearchChange(query);
   };
 
-  const handleSort = (
-    field: 'star' | 'tamil_series' | 'telugu_series' | 'kannada_series',
-  ) => {
+  const handleSort = (field: keyof T) => {
     if (sortField === field) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
@@ -75,13 +75,15 @@ export default function BasicTable({
     }
   };
 
-  const filteredBirthStars = birthStar.filter((star) =>
-    star.star.toLowerCase().includes(searchQuery.toLowerCase()),
+  const filteredData = data.filter((item) =>
+    columns.some((col) =>
+      String(item[col.field]).toLowerCase().includes(searchQuery.toLowerCase()),
+    ),
   );
 
-  const sortedBirthStars = filteredBirthStars.sort((a, b) => {
-    const fieldA = a[sortField].toLowerCase();
-    const fieldB = b[sortField].toLowerCase();
+  const sortedData = filteredData.sort((a, b) => {
+    const fieldA = String(a[sortField]).toLowerCase();
+    const fieldB = String(b[sortField]).toLowerCase();
     if (fieldA < fieldB) {
       return sortDirection === 'asc' ? -1 : 1;
     }
@@ -91,22 +93,19 @@ export default function BasicTable({
     return 0;
   });
 
-  const paginatedBirthStars = sortedBirthStars.slice(
+  const paginatedData = sortedData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
 
-  const handlePageChange = (
-    _event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value);
   };
 
   return (
     <>
       <Typography variant="h4" gutterBottom>
-        Birth Stars
+        {title}
       </Typography>
 
       <TableContainer component={Paper}>
@@ -133,14 +132,13 @@ export default function BasicTable({
             <TextField
               type="text"
               onChange={handleSearchInputChange}
-              placeholder="Search birth star"
+              placeholder="Search"
               style={{ marginRight: '10px' }}
               variant="outlined"
             />
 
             <Button
-            style={{ height:"56px"}}
-           
+              style={{ height: '56px' }}
               variant="contained"
               color="primary"
               onClick={() => setShowPopup(true)}
@@ -154,48 +152,24 @@ export default function BasicTable({
           <TableHead>
             <TableRow>
               <TableCell align="left">S.No</TableCell>
-              <TableCell
-                align="left"
-                onClick={() => handleSort('star')}
-                style={{ cursor: 'pointer' }}
-              >
-                Birth Star{' '}
-                {sortField === 'star' && (sortDirection === 'asc' ? '▲' : '▼')}
-              </TableCell>
-              <TableCell
-                align="left"
-                onClick={() => handleSort('tamil_series')}
-                style={{ cursor: 'pointer' }}
-              >
-                Tamil Series{' '}
-                {sortField === 'tamil_series' &&
-                  (sortDirection === 'asc' ? '▲' : '▼')}
-              </TableCell>
-              <TableCell
-                align="left"
-                onClick={() => handleSort('telugu_series')}
-                style={{ cursor: 'pointer' }}
-              >
-                Telugu Series{' '}
-                {sortField === 'telugu_series' &&
-                  (sortDirection === 'asc' ? '▲' : '▼')}
-              </TableCell>
-              <TableCell
-                align="left"
-                onClick={() => handleSort('kannada_series')}
-                style={{ cursor: 'pointer' }}
-              >
-                Kannada Series{' '}
-                {sortField === 'kannada_series' &&
-                  (sortDirection === 'asc' ? '▲' : '▼')}
-              </TableCell>
+              {columns.map((column) => (
+                <TableCell
+                  key={String(column.field)}
+                  align="left"
+                  onClick={() => column.sortable && handleSort(column.field)}
+                  style={{ cursor: column.sortable ? 'pointer' : 'default' }}
+                >
+                  {column.headerName}{' '}
+                  {sortField === column.field && (sortDirection === 'asc' ? '▲' : '▼')}
+                </TableCell>
+              ))}
               <TableCell align="left">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedBirthStars.map((star, index) => (
+            {paginatedData.map((item, index) => (
               <TableRow
-                key={star.id}
+                key={String(item[idField])}
                 sx={{
                   '&:last-child td, &:last-child th': { border: 0 },
                 }}
@@ -203,17 +177,16 @@ export default function BasicTable({
                 <TableCell component="th" scope="row">
                   {index + 1 + (currentPage - 1) * itemsPerPage}
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {star.star}
-                </TableCell>
-                <TableCell align="left">{star.tamil_series}</TableCell>
-                <TableCell align="left">{star.telugu_series}</TableCell>
-                <TableCell align="left">{star.kannada_series}</TableCell>
+                {columns.map((column) => (
+                  <TableCell key={String(column.field)} component="th" scope="row">
+                    {String(item[column.field])}
+                  </TableCell>
+                ))}
                 <TableCell align="left">
-                  <IconButton onClick={() => handleEdit(star)}>
+                  <IconButton onClick={() => handleEdit(item)}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={() => handleDelete(star.id)}>
+                  <IconButton onClick={() => handleDelete(item[idField])}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
@@ -225,7 +198,7 @@ export default function BasicTable({
 
       <Box sx={{ display: 'flex', justifyContent: 'end' }}>
         <Pagination
-          count={Math.ceil(filteredBirthStars.length / itemsPerPage)}
+          count={Math.ceil(filteredData.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
         />

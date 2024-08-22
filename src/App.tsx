@@ -37,6 +37,13 @@ import Approvedprofile from './components/new_profile/profiles/Approved profile'
 import Featuredprofile from './components/new_profile/profiles/Featured profile';
 import Deletedprofile from './components/new_profile/profiles/Deleted profile';
 import NewProfile from './components/new_profile/profiles/New profile';
+import PageList from './components/submenue/Sidebar/CsmPage/CsmTableData';
+import CKEditorComponent from './components/submenue/Sidebar/CsmPage/AddCsmData';
+import CsmEditorComponent from './components/submenue/Sidebar/CsmPage/EditCsmData';
+import SiteDetailsForm from './components/submenue/Sidebar/AdminSettings/AdminSetting';
+import EditAdminUserForm from './components/submenue/AdminUsers/EditAdminUsers';
+import AdminUserForm from './components/submenue/AdminUsers/AdminUsers';
+import AdminTable from './components/submenue/AdminUsers/AdminTable';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -328,6 +335,73 @@ function App() {
               
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/admin/edit/:ContentId" element={<EditProfilePage />} />
+              <Route
+                path="/CsmDataTable"
+                element={
+                  <>
+                    <PageTitle title="CsmDataTable" />
+                    <PageList />
+                  </>
+                }
+              />
+
+              
+<Route
+                path="/AddCsmData"
+                element={
+                  <>
+                    <PageTitle title="AddCsmData" />
+                    <CKEditorComponent />
+                  </>
+                }
+              />
+<Route
+  path="/EditCsmData/:id"
+  element={
+    <>
+      <PageTitle title="EditCsmData" />
+      <CsmEditorComponent/>
+    </>
+  }
+/>
+<Route
+  path="/SiteDetailsForm"
+  element={
+    <>
+      <PageTitle title="SiteDetailsForm" />
+      < SiteDetailsForm/>
+    </>
+  }
+/>
+
+<Route
+  path="/AdminUsers"
+  element={
+    <>
+      <PageTitle title="AdminUsers" />
+      <AdminUserForm/>
+    </>
+  }
+/>
+
+<Route
+  path="/AdminList"
+  element={
+    <>
+      <PageTitle title="AdminList" />
+      <AdminTable/>
+    </>
+  }
+/>
+<Route
+  path="/EditAdminUserForm/:id"
+  element={
+    <>
+      <PageTitle title="EditAdminUserForm" />
+      <EditAdminUserForm/>
+    </>
+  }
+/>
             </Routes>
           </DefaultLayout>
         }

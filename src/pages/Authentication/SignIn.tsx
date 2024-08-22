@@ -19,6 +19,7 @@ const SignIn: React.FC<SignInProps> = ({ setIsAuthenticated }) => {
   const [loading, setLoading] = useState(false); // Loading state
   const navigate = useNavigate();
 
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true); // Start loading
@@ -26,7 +27,7 @@ const SignIn: React.FC<SignInProps> = ({ setIsAuthenticated }) => {
 
     try {
       console.log('Submitting form with email:', email, 'and password:', password);
-      const response = await axios.post('http://localhost:8000/api/accounts/signin/', { email, password });
+      const response = await axios.post('http://192.168.172.122:8000/api/accounts/signin/', { email, password });
 
       if (response.data.message === 'Success') {
         setMessage('');

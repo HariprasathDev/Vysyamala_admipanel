@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import Logo from '../../../public/Vysyamala.svg';
 import { CgProfile } from "react-icons/cg";
-import { FaGlobe } from "react-icons/fa";
+import { FaGlobe, FaUser } from "react-icons/fa";
 import { MdAddLocationAlt } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { MdFamilyRestroom } from "react-icons/md";
@@ -118,8 +118,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 success rounded-sm px-4 py-2 text-black font-medium text-PrimaryRed hover:text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/' ||
-                          pathname.includes('dashboard'))
-
+                            pathname.includes('dashboard'))
+                          
                           }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -185,8 +185,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Dashboard
+                              <GoDot/>
+                             Dashboard
                             </NavLink>
                           </li>
                         </ul>
@@ -197,6 +197,30 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 }}
               </SidebarLinkGroup>
               <li>
+                {/* <NavLink
+                  to="/"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${pathname.includes('profile') && 'bg-graydark dark:bg-meta-4'
+                    }`}
+                >
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.0002 7.79065C11.0814 7.79065 12.7689 6.1594 12.7689 4.1344C12.7689 2.1094 11.0814 0.478149 9.0002 0.478149C6.91895 0.478149 5.23145 2.1094 5.23145 4.1344C5.23145 6.1594 6.91895 7.79065 9.0002 7.79065ZM9.0002 1.7719C10.3783 1.7719 11.5033 2.84065 11.5033 4.16252C11.5033 5.4844 10.3783 6.55315 9.0002 6.55315C7.62207 6.55315 6.49707 5.4844 6.49707 4.16252C6.49707 2.84065 7.62207 1.7719 9.0002 1.7719Z"
+                      fill=""
+                    />
+                    <path
+                      d="M10.8283 9.05627H7.17207C4.16269 9.05627 1.71582 11.5313 1.71582 14.5406V16.875C1.71582 17.2125 1.99707 17.5219 2.3627 17.5219C2.72832 17.5219 3.00957 17.2407 3.00957 16.875V14.5406C3.00957 12.2344 4.89394 10.3219 7.22832 10.3219H10.8564C13.1627 10.3219 15.0752 12.2063 15.0752 14.5406V16.875C15.0752 17.2125 15.3564 17.5219 15.7221 17.5219C16.0877 17.5219 16.3689 17.2407 16.3689 16.875V14.5406C16.2846 11.5313 13.8377 9.05627 10.8283 9.05627Z"
+                      fill=""
+                    />
+                  </svg>
+                  Profile
+                </NavLink> */}
               </li>
               <SidebarLinkGroup
                 activeCondition={
@@ -209,7 +233,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/forms' ||
-                          pathname.includes('forms')) &&
+                            pathname.includes('forms')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
@@ -253,22 +277,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Profile
                             </NavLink>
                           </li>
-                          <li>
-                            <NavLink
-                              to="Approved_List"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Approved List
-                            </NavLink>
-                          </li>
+                            <li>
+                              <NavLink
+                                to="Approved_List"
+                                className={({ isActive }) =>
+                                  'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                  (isActive && '!text-black')
+                                }
+                              >
+                                <GoDot/>
+                                Approved List
+                              </NavLink>
+                            </li>
                           <li>
                             <NavLink
                               to="ProfileForm"
@@ -277,115 +301,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Add Profile
-                            </NavLink>
-
-                            {/* <NavLink
-                              to="Approvedprofile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Approvedprofile
-                            </NavLink> */}
-
-
-                            {/* <NavLink
-                              to="ProfileForm"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              New profile
-                            </NavLink> */}
-
-
-
-                          </li>
-
-
-
-
-                          <li>
-                            <NavLink
-                              to="NewProfile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              New Profile
+                              <GoDot/>
+                            Add Profile
                             </NavLink>
                           </li>
-
-                          <li>
-                            <NavLink
-                              to="PaidProfile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Paid Profile
-                            </NavLink>
-                          </li>
-
-                          <li>
-                            <NavLink
-                              to="Approvedprofile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Approved profile
-                            </NavLink>
-                          </li>
-
-                          <li>
-                            <NavLink
-                              to="Featuredprofile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Featured profile
-                            </NavLink>
-                          </li>
-
-
-                          <li>
-                            <NavLink
-                              to="Deletedprofile"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Deleted profile
-                            </NavLink>
-                          </li>
-
-
-
-
-
-
-
-
-
-
                         </ul>
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
@@ -406,7 +325,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/master-location' ||
-                          pathname.includes('master-location')) &&
+                            pathname.includes('master-location')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
@@ -454,7 +373,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Country
                             </NavLink>
                           </li>
@@ -466,7 +385,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               State
                             </NavLink>
                           </li>
@@ -478,7 +397,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               District
                             </NavLink>
                           </li>
@@ -502,96 +421,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
-
-                      <NavLink
-                        to="#"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/religions-community' ||
-                          pathname.includes('religions-community')) &&
-                          'bg-graydark dark:bg-meta-4'
-                          }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
-                        }}
-                      >
-
-                        <FaGlobe />
-                        Religions and Community
-
-                        <svg
-                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
-                            }`}
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                            fill=""
-                          />
-                        </svg>
-                      </NavLink>
-
-
-                      <div
-                        className={`translate transform overflow-hidden ${!open && 'hidden'
-                          }`}
-                      >
-                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-
-                          <li>
-                            <NavLink
-                              to="/ReligionTable"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Religion
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/CasteTable"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Caste
-                            </NavLink>
-                          </li>
-                        </ul>
-                      </div>
-
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              {/* <!-- Menu Item Religions and Community End --> */}
-              {/* Dropdown Menu End */}
-
-              {/* <!-- Menu Item Horoscope Master --> */}
-              <SidebarLinkGroup
-                activeCondition={
-                  pathname === '/horoscope-master' ||
-                  pathname.includes('horoscope-master')
-                }
-              >
-                {(handleClick, open) => {
-                  return (
-                    <React.Fragment>
                       {/* Main Menu Item */}
                       <NavLink
                         to="#"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/horoscope-master' ||
-                          pathname.includes('horoscope-master')) &&
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/religions-community' ||
+                            pathname.includes('religions-community')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
@@ -599,11 +433,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           sidebarExpanded ? handleClick() : setSidebarExpanded(true);
                         }}
                       >
-                        {/* Star Icon */}
-                        <FaRegStar />
+                        {/* Earth Icon */}
+                        <FaGlobe />
+
+
 
                         {/* Menu Item Text */}
-                        Horoscope Master
+                        Religions and Community
 
                         {/* Arrow Icon for Dropdown */}
                         <svg
@@ -630,52 +466,29 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                          {/* Submenu Items */}
                           <li>
                             <NavLink
-                              to="BirthStarList"
+                              to="/ReligionTable"
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Birth Star
+                              <GoDot/>
+                              Religion
                             </NavLink>
                           </li>
                           <li>
                             <NavLink
-                              to="/RasiList"
+                              to="/CasteTable"
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Rasi
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/LagnamList"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Lagnam/Didi
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/DasaBalanceList"
-                              className={({ isActive }) =>
-                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
-                                (isActive && '!text-black')
-                              }
-                            >
-                              <GoDot />
-                              Dasa Balance
+                              <GoDot/>
+                              Caste
                             </NavLink>
                           </li>
                         </ul>
@@ -685,7 +498,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   );
                 }}
               </SidebarLinkGroup>
-
+              {/* <!-- Menu Item Religions and Community End --> */}
 
 
               <SidebarLinkGroup
@@ -701,7 +514,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/profile-master' ||
-                          pathname.includes('profile-master'))
+                            pathname.includes('profile-master'))
                           }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -742,7 +555,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Profile Holder
                             </NavLink>
                           </li>
@@ -754,7 +567,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Marital Status
                             </NavLink>
                           </li>
@@ -766,7 +579,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Height
                             </NavLink>
                           </li>
@@ -778,7 +591,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Complexion
                             </NavLink>
                           </li>
@@ -790,7 +603,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Parents Occupation
                             </NavLink>
                           </li>
@@ -802,7 +615,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Highest Education
                             </NavLink>
                           </li>
@@ -814,8 +627,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
-                              Ug Degree
+                            <GoDot/>
+                            Ug Degree
                             </NavLink>
                           </li>
                           <li>
@@ -826,7 +639,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 }`
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Annual Income
                             </NavLink>
                           </li>
@@ -838,12 +651,127 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 }}
               </SidebarLinkGroup>
 
+              {/* <!-- Menu Item Horoscope Master --> */}
+              <SidebarLinkGroup
+                activeCondition={
+                  pathname === '/horoscope-master' ||
+                  pathname.includes('horoscope-master')
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <React.Fragment>
+                      {/* Main Menu Item */}
+                      <NavLink
+                        to="#"
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/horoscope-master' ||
+                            pathname.includes('horoscope-master')) &&
+                          'bg-graydark dark:bg-meta-4'
+                          }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+                        }}
+                      >
+                        {/* Star Icon */}
+                        <FaRegStar />
 
+                        {/* Menu Item Text */}
+                        Horoscope Master
 
+                        {/* Arrow Icon for Dropdown */}
+                        <svg
+                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
+                            }`}
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                            fill=""
+                          />
+                        </svg>
+                      </NavLink>
 
-
-
-
+                      {/* Dropdown Menu Start */}
+                      <div
+                        className={`translate transform overflow-hidden ${!open && 'hidden'
+                          }`}
+                      >
+                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                          {/* Submenu Items */}
+                          <li>
+                            <NavLink
+                              to="PlaceOfBirthList"
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                (isActive && '!text-black')
+                              }
+                            >
+                              <GoDot/>
+                              Place of Birth
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="BirthStarList"
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                (isActive && '!text-black')
+                              }
+                            >
+                              <GoDot/>
+                              Birth Star
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/RasiList"
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                (isActive && '!text-black')
+                              }
+                            >
+                              <GoDot/>
+                              Rasi
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/LagnamList"
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                (isActive && '!text-black')
+                              }
+                            >
+                              <GoDot/>
+                              Lagnam/Didi
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/DasaBalanceList"
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' +
+                                (isActive && '!text-black')
+                              }
+                            >
+                              <GoDot/>
+                              Dasa Balance
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
+                      {/* Dropdown Menu End */}
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
               <SidebarLinkGroup
                 activeCondition={
                   pathname === '/family-master' ||
@@ -857,14 +785,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/family-master' ||
-                          pathname.includes('family-master'))
+                            pathname.includes('family-master')) 
                           }`}
                         onClick={(e) => {
                           e.preventDefault();
                           sidebarExpanded ? handleClick() : setSidebarExpanded(true);
                         }}
                       >
-                        <MdFamilyRestroom />
+                        <MdFamilyRestroom/>
                         Family Master
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
@@ -897,7 +825,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
+                              <GoDot/>
                               Family Type
                             </NavLink>
                           </li>
@@ -909,8 +837,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Family Status
+                              <GoDot/>
+                              Family Status 
                             </NavLink>
                           </li>
                           <li>
@@ -921,8 +849,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 (isActive && '!text-black')
                               }
                             >
-                              <GoDot />
-                              Family Value
+                              <GoDot/>
+                              Family Value 
                             </NavLink>
                           </li>
                         </ul>
@@ -932,6 +860,199 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   );
                 }}
               </SidebarLinkGroup>
+              <SidebarLinkGroup
+                activeCondition={
+                  pathname === '/CSM page' ||
+                  pathname.includes('CSM page')
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <React.Fragment>
+
+                      <NavLink
+                        to="#"
+                        className={`group relative flex items-center gap-2.5 success rounded-sm px-4 py-2 text-black font-medium text-PrimaryRed hover:text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${(pathname === '/' ||
+                        pathname.includes('dashboard'))
+
+                        }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+                        }}
+                      >
+                        <svg
+                          className="fill-current"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12 2L2 10.5858V21H6V14H12V21H16V10.5858L12 2ZM9 13V19H7V13H9ZM17 13V19H15V13H17Z"
+                            fill=""
+                          />
+                        </svg>
+                        CSM page
+                        <svg
+                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
+                            }`}
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                            fill=""
+                          />
+                        </svg>
+                      </NavLink>
+                      <div
+                        className={`translate transform overflow-hidden ${!open && 'hidden'
+                          }`}
+                      >
+                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                          {/* Submenu Items */}
+                         
+                          <li>
+                            <NavLink
+                              to="/CsmDataTable"
+                              className={
+                              'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' 
+                            }
+                            >
+                               <GoDot />
+                              Csm Data List
+                            </NavLink>
+                            
+                          </li>
+                          
+                          
+                         
+
+                        </ul>
+                      </div>
+                      {/* Dropdown Menu End */}
+                      
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
+              <SidebarLinkGroup
+  activeCondition={pathname === '/SiteDetailsForm' || pathname.includes('AdminSettings')}
+>
+  {(handleClick, open) => {
+    return (
+      <React.Fragment>
+        <NavLink
+          to="/SiteDetailsForm"
+          className={`group relative flex items-center gap-2.5 success rounded-sm px-4 py-2 text-black font-medium text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${pathname === '/' || pathname.includes('dashboard') ? '' : ''}`}
+          onClick={() => {
+            setSidebarExpanded(false);
+          }}
+        >
+          <svg
+            className="fill-current"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M19.14,12.936c0.038-0.304,0.06-0.613,0.06-0.936s-0.022-0.632-0.06-0.936l2.03-1.593c0.188-0.147,0.24-0.42,0.115-0.632
+              l-1.922-3.328c-0.125-0.211-0.391-0.292-0.617-0.205l-2.39,0.96c-0.499-0.385-1.03-0.705-1.595-0.96l-0.36-2.53
+              C14.39,2.194,14.178,2,13.94,2h-3.88c-0.238,0-0.45,0.194-0.486,0.428l-0.36,2.53c-0.565,0.255-1.096,0.575-1.595,0.96
+              l-2.39-0.96c-0.226-0.087-0.492-0.006-0.617,0.205L2.655,8.839c-0.125,0.211-0.072,0.485,0.115,0.632l2.03,1.593
+              C4.762,11.368,4.74,11.676,4.74,12s0.022,0.632,0.06,0.936l-2.03,1.593c-0.188,0.147-0.24,0.42-0.115,0.632l1.922,3.328
+              c0.125,0.211,0.391,0.292,0.617,0.205l2.39-0.96c0.499,0.385,1.03,0.705,1.595,0.96l0.36,2.53c0.036,0.234,0.248,0.428,0.486,0.428
+              h3.88c0.238,0,0.45-0.194,0.486-0.428l0.36-2.53c0.565-0.255,1.096-0.575,1.595-0.96l2.39,0.96c0.226,0.087,0.492,0.006,0.617-0.205
+              l1.922-3.328c0.125-0.211,0.072-0.485-0.115-0.632L19.14,12.936z M12,15.5c-1.933,0-3.5-1.567-3.5-3.5s1.567-3.5,3.5-3.5
+              s3.5,1.567,3.5,3.5S13.933,15.5,12,15.5z"
+              fill="currentColor"
+            />
+          </svg>
+          Admin Setting
+          <svg
+            className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open ? 'rotate-180' : ''}`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+          </svg>
+        </NavLink>
+      </React.Fragment>
+    );
+  }}
+</SidebarLinkGroup>
+
+<SidebarLinkGroup
+  activeCondition={
+    pathname === '/AdminList' || pathname.includes('AdminList')
+  }
+>
+  {(handleClick, open) => (
+    <React.Fragment>
+      <NavLink
+        to="#"
+        className={`group relative flex items-center gap-2.5 success rounded-sm px-4 py-2 text-black font-medium text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${
+          pathname === '/' || pathname.includes('dashboard') ? 'bg-gray-100' : ''
+        }`}
+        onClick={(e) => {
+          e.preventDefault();
+          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+        }}
+      >
+        <FaUser  size={18} /> {/* Replace with user icon */}
+        Admin Users
+        <svg
+          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'}`}
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+            fill=""
+          />
+        </svg>
+      </NavLink>
+      <div
+        className={`translate transform overflow-hidden ${!open && 'hidden'}`}
+      >
+        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+          {/* Submenu Items */}
+          <li>
+            <NavLink
+              to="/AdminList"
+              className="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out"
+            >
+              
+               <GoDot />
+              User Details
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+      {/* Dropdown Menu End */}
+    </React.Fragment>
+  )}
+</SidebarLinkGroup>
             </ul>
           </div>
         </nav>
@@ -939,4 +1060,5 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     </aside>
   );
 };
+
 export default Sidebar;

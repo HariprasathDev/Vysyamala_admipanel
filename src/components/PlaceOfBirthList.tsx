@@ -42,16 +42,16 @@ const PlaceOfBirthList: React.FC = () => {
   }, []);
 
   const fetchPlacesOfBirth = async () => {
-    const response = await axios.get('http://localhost:8000/api/accounts/place-of-births/');
+    const response = await axios.get('http://192.168.172.122:8000/api/accounts/place-of-births/');
     setPlacesOfBirth(response.data);
   };
 
   const addOrUpdatePlaceOfBirth = async () => {
     const placeData = { place: newPlaceOfBirth };
     if (editPlaceId) {
-      await axios.put(`http://localhost:8000/api/accounts/place-of-births/${editPlaceId}/`, placeData);
+      await axios.put(`http://192.168.172.122:8000/api/accounts/place-of-births/${editPlaceId}/`, placeData);
     } else {
-      await axios.post('http://localhost:8000/api/accounts/place-of-births/', placeData);
+      await axios.post('http://192.168.172.122:8000/api/accounts/place-of-births/', placeData);
     }
     setNewPlaceOfBirth('');
     setShowPopup(false);
@@ -73,7 +73,7 @@ const PlaceOfBirthList: React.FC = () => {
 
   const confirmDeletePlace = async () => {
     if (placeToDelete !== null) {
-      await axios.delete(`http://localhost:8000/api/accounts/place-of-births/${placeToDelete}/`);
+      await axios.delete(`http://192.168.172.122:8000/api/accounts/place-of-births/${placeToDelete}/`);
       setPlaceToDelete(null);
       setDeleteConfirmation(false);
       fetchPlacesOfBirth();
