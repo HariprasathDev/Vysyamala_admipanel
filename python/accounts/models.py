@@ -343,7 +343,7 @@ class ProfileFamilyDetails(models.Model):
     family_name = models.CharField(max_length=100)
     about_self = models.TextField()
     hobbies = models.TextField()
-    blood_group = models.CharField(max_length=10)
+    blood_group = models.CharField(max_length=20)
     Pysically_changed = models.CharField(max_length=10)  
     property_details = models.TextField()
     property_worth = models.CharField(max_length=100)
@@ -359,7 +359,7 @@ class ProfileEduDetails(models.Model):
     profile_id = models.CharField(max_length=50, unique=True, primary_key=True, null=False, blank=False)
     highest_education = models.CharField(max_length=100)
     ug_degeree = models.CharField(max_length=100)
-    # profession = models.CharField(max_length=100)
+    # profession = models.TextField()
     about_edu = models.TextField()
     anual_income = models.CharField(max_length=100)
     actual_income = models.CharField(max_length=100)  
@@ -386,3 +386,27 @@ class ProfilePartnerPref(models.Model):
 
     class Meta:
         db_table = 'profile_partner_pref'
+
+
+
+class ProfileHoroscope(models.Model):
+    profile_id = models.CharField(max_length=50, unique=True, primary_key=True)
+    lagnam_didi = models.CharField(max_length=50)
+    birth_rasi_name = models.CharField(max_length=50)
+    birthstar_name = models.TimeField()
+    place_of_birth = models.CharField(max_length=100)
+    chevvai_dosaham = models.CharField(max_length=50)
+    # other_horoscope_details = models.TextField()
+    # time_of_birth = models.DateTimeField(null=True)
+    # amsa_kattam =  models.CharField(max_length=100)
+    # rasi_kattam = models.TextField()
+    # horoscope_hints = models.TextField()
+    dasa_balance = models.TextField()
+    dasa_name = models.TextField()
+    nalikai = models.TextField()
+    ragu_dosham = models.TextField()
+  
+
+    class Meta:
+        db_table = 'profile_horoscope'
+
